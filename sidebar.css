@@ -31,57 +31,70 @@
   }
   
   /* 每一项按钮 */
-  .side-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  
-    width: 100%;
-    padding: 8px 12px;
-  
-    border-radius: 999px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  
-    font-size: 14px;
-    color: #111827;
-    text-align: left;
-  
-    transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
-  }
-  
-  /* 鼠标滑上去的效果 */
-  .side-item:hover {
-    background: #eff6ff;
-    color: #1d4ed8;
-    transform: translateX(2px);
-  }
-  
-  /* 左侧小图标 */
-  .side-icon {
-    width: 22px;
-    height: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-  }
-  
-  /* 文字部分 */
-  .side-text {
-    white-space: nowrap;
-  }
-  
-  /* 收起时：隐藏文字，只保留图标居中 */
-  .sidebar.collapsed .side-text {
-    display: none;
-  }
-  
-  .sidebar.collapsed .side-item {
-    justify-content: center;
-    padding-inline: 0;
-  }
+/* 每一行侧边栏按钮（大卡片样式） */
+.side-item {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  padding:10px 12px;
+  margin-bottom:8px;
+
+  border-radius:14px;
+  background:#ffffff;
+  text-decoration:none;
+  color:#111827;
+  cursor:pointer;
+
+  transition:background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+
+/* 左侧圆形图标（可以是 emoji，也可以以后换成 img） */
+.side-logo{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:#f3f4f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+}
+
+/* 右侧文字区域 */
+.side-label{
+  display:flex;
+  flex-direction:column;
+}
+
+/* 标题 */
+.side-title{
+  font-size:15px;
+  font-weight:600;
+}
+
+/* 描述 */
+.side-desc{
+  font-size:12px;
+  color:#6b7280;
+}
+
+/* 悬停效果 */
+.side-item:hover{
+  background:#eef2ff;
+  transform:translateX(2px);
+  box-shadow:0 8px 18px rgba(79,70,229,.18);
+}
+
+/* 侧边栏折叠时：只显示图标，隐藏文字 */
+.sidebar.collapsed .side-label{
+  display:none;
+}
+.sidebar.collapsed .side-item{
+  justify-content:center;
+  padding-inline:0;
+}
+
   
   /* =========================
      折叠/展开蓝色按钮
