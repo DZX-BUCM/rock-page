@@ -233,6 +233,11 @@
     .hero-title{ font-size:26px; }
     .search-input{ height:50px; }
   }
+
+
+
+
+
   
 /* ################################################################################################################################################################### */
 /*                                                                      这是分类栏样式                                                                                  */
@@ -364,6 +369,34 @@
   z-index:2;
 }
 
+/* 初始状态：完全隐藏、不可点击 */
+.rock-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:#334155;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+  cursor:pointer;
+  z-index:2;
+
+  opacity:0;                /* 默认看不见 */
+  pointer-events:none;      /* 默认不接收事件 */
+  transition:opacity .25s ease;
+}
+
+/* 鼠标移到整个区域（滚动内容 + 箭头）上时，显示箭头 */
+.rock:hover .rock-arrow{
+  opacity:1;
+  pointer-events:auto;
+}
+
+
+
 /* 调整滚动框箭头位置 */
 .rock-prev{ left:16px; }   /* 原来是 0 */
 .rock-next{ right:16px; }  /* 原来是 0 */
@@ -404,6 +437,13 @@
     margin:8px 8px 0;
   }
 }
+
+
+
+
+
+
+
 
 
 
