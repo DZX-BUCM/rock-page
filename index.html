@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>网址大全</title>
+
+
+<!-- 这里是图标 -->
+<link rel="icon" href="favicon/shizi.svg" />
+
+<!-- 样式引用区 -->
+  <link rel="stylesheet" href="search.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="topic.css" />
+  <link rel="stylesheet" href="rock.css" />
+
+
+
+</head>
+<body>
+  <header class="topic" role="banner">
+    <div class="bar" id="topic-bar">
+      <a class="brand" href="https://mail.google.com/mail/u/0/#inbox">
+        <img src="ico.png" alt="" onerror="this.style.display='none'"/>
+        <div class="brand-text">
+          <strong>邮箱直达</strong>
+          <small>一键打开谷歌邮箱</small>
+        </div>
+      </a>
+  
+      <!-- <nav class="nav" id="topic-nav" data-note="">我已经删了这个版块了 -->
+        <a class="nav-item active" href="https://chatgpt.com/" target="_blank">AI导航 <em class="badge badge-red">精选</em></a>
+        <a class="nav-item" href="https://cas.bucm.edu.cn/cas/login?service=https%3A%2F%2Fcas.bucm.edu.cn%2Fcas%2Foauth2.0%2FcallbackAuthorize%3Fsession_state%3D6B234DA998DEFC48EE5FDFB822FC7C4E" target="_blank">数字北中医 <em class="badge badge-sand">New</em></a>
+        <a class="nav-item" href="https://rushiwowen.co/chat" target="_blank">大乘佛法</a>
+        <a class="nav-item" href="https://16map.com/" target="_blank">更多导航 <span class="chev"></span></a>
+        
+      <!-- </nav> -->
+    </div>
+  </header>
+  
+  <!-- 现有内容继续…… -->
+
+  <section class="hero">
+    <h1 class="hero-title">开发编程提效必备的程序员导航</h1>
+  
+    <nav class="hero-tabs">
+
+    </nav>
+  
+    <div class="search-wrap">
+      <input id="search-input" class="search-input" placeholder="微软Bing搜索" />
+      <button id="search-btn" class="search-btn" aria-label="搜索">Q</button>
+    </div>
+  
+    <div id="engine-pills" class="engine-pills"></div>
+  </section>
+  
+  <section class="rock" aria-label="滚动栏目">
+    <button class="rock-arrow rock-prev" aria-label="上一页">‹</button>
+    <div class="rock-viewport" id="rock-viewport">
+      <div class="rock-list" id="rock-list"></div>
+    </div>
+    <button class="rock-arrow rock-next" aria-label="下一页">›</button>
+  </section>
+  
+
+  <main class="grid" id="grid"></main>
+
+
+
+<!-- 脚本引用区 -->
+  <script src="app.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="topic.js" defer></script>
+  <script src="rock.js" defer></script>
+
+
+
+</body>
+</html>

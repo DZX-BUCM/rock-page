@@ -1,0 +1,134 @@
+/* =============================
+   一键可调参数（改这里就行）
+   ============================= */
+   :root{
+    /* —— 颜色 —— */
+    --topic-primary:#ffffff;           /* 顶部细蓝条 & 强调色 */
+    --topic-bg:#ffffff;               /* 题头白色底 */
+    --topic-text:#111827;             /* 主文字 */
+    --topic-muted:#6b7280;            /* 副标题/浅色文字 */
+    --topic-border:#e5e7eb;           /* 边框线 */
+    --topic-icon:#374151;             /* 右侧小图标颜色 */
+    --topic-login:#3b82f6;            /* 登录按钮色 */
+    --topic-badge-red:#ef4444;        /* “精选” 红标 */
+    --topic-badge-sand-bg:#fde68a;    /* “New” 背景 */
+    --topic-badge-sand-text:#92400e;  /* “New” 文字 */
+  
+    /* —— 功能 / 布局开关 —— */
+    --topic-pad-x:0;                  /* 左右间距：0=贴边；12px=有留白 */
+    --topic-bar-radius:0;             /* 顶部条圆角：0=直角；14px=圆角卡片 */
+    --topic-topline-h:0px;            /* 顶部细蓝条高度：0=不显示 */
+    --topic-border-x:0;               /* 左右边框：0=无；1px solid var(--topic-border)=有 */
+  
+    /* —— 尺寸（可不改） —— */
+    --topic-shadow:0 2px 8px rgba(0,0,0,.06);
+    --topic-nav-gap:16px;
+    --topic-menu-w:38px;
+    --topic-menu-h:34px;
+  }
+  
+  /* =============================
+     题头样式（下面一般不用改）
+     ============================= */
+  
+  /* 仅作用于题头，避免影响你现有样式 */
+  .topic{ position:sticky; top:0; z-index:50; padding:6px var(--topic-pad-x) 0; }
+  .topic .bar{
+    position:relative; display:flex; align-items:center; gap:12px;
+    background:var(--topic-bg); border:1px solid var(--topic-border);
+    border-left:var(--topic-border-x); border-right:var(--topic-border-x);
+    border-radius:var(--topic-bar-radius);
+    padding:8px 10px; box-shadow:var(--topic-shadow);
+  }
+  .topic .bar::before{ /* 顶部细蓝条 */
+    content:""; position:absolute; left:0; right:0; top:-6px;
+    height:var(--topic-topline-h);
+    background:var(--topic-primary); border-radius:8px 8px 0 0;
+  }
+  
+  /* 左侧菜单按钮（三道杠） */
+  .topic .menu{
+    width:var(--topic-menu-w); height:var(--topic-menu-h);
+    border-radius:8px; border:1px solid var(--topic-border);
+    background:#fff; cursor:pointer; position:relative; flex-shrink:0;
+  }
+  .topic .menu span, .topic .menu span::before, .topic .menu span::after{
+    position:absolute; left:8px; right:8px; height:2px; background:var(--topic-text); content:"";
+  }
+  .topic .menu span{ top:50%; transform:translateY(-50%); }
+  .topic .menu span::before{ top:-8px; }
+  .topic .menu span::after{ bottom:-8px; }
+  
+  /* 品牌区 */
+  .topic .brand{ display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none; }
+  .topic .brand img{ width:40px; height:40px; border-radius:10px; display:block; }
+  .topic .brand-text strong{ display:block; line-height:1; color:var(--topic-text); }
+  .topic .brand-text small{ display:block; font-size:12px; color:var(--topic-muted); }
+  
+  /* 导航 */
+  .topic .nav{ position:relative; display:flex; align-items:center; gap:var(--topic-nav-gap); margin-left:10px; }
+  .topic .nav::after{ /* 顶部 “可商用” 提示 */
+    content:attr(data-note);
+    position:absolute; top:-18px; left:50%; transform:translateX(-50%);
+    font-size:12px; font-weight:700; color:#fff; background:var(--topic-primary); border-radius:6px;
+    padding:2px 6px;
+  }
+  .topic .nav-item{
+    display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:8px;
+    color:#374151; text-decoration:none; font-weight:700; background:transparent;
+  }
+  .topic .nav-item .chev{
+    width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+    transform:rotate(-45deg); display:inline-block; margin-left:2px;
+  }
+  .topic .nav-item.active{ background:#f3f4f6; }
+  .topic .badge{ font-size:11px; padding:2px 6px; border-radius:6px; font-weight:800; }
+  .topic .badge-red{ background:var(--topic-badge-red); color:#fff; }
+  .topic .badge-sand{ background:var(--topic-badge-sand-bg); color:var(--topic-badge-sand-text); }
+  
+/* === 居中对齐部分 === */
+html, body { margin:0; }
+.topic { padding:0; }
+.topic .bar {
+  display:flex;
+  align-items:center;
+  height:64px;
+  padding:0 20px;
+  border:0;
+  box-shadow:none;
+  justify-content:center;
+}
+.topic .brand { display:flex; align-items:center; }
+.topic .brand img { width:40px; height:40px; }
+.topic .nav-item { display:inline-flex; align-items:center; }
+.topic .bar::before { display:none; }
+
+/* === 调整顶部导航文字间距 === */
+.topic .nav {
+  gap:50px; /* 控制导航项之间的间距 */
+  margin-left: 60px; /* ← 控制“邮箱直达”和“AI导航”的水平距离 */
+}
+.topic .nav-item {
+  padding:6px 12px; /* 控制每个导航文字内部留白 */
+}
+/* 调整 logo 与品牌文字间距 */
+.topic .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 默认大约是 10px，这里调成 12px 或更大 */
+}
+
+/* 也可以直接精确控制图片和文字距离 */
+.topic .brand img {
+  margin-right: 12px; /* 调整 logo 与右边文字的间隔 */
+}
+
+/* 调整顶部导航与下方内容的距离 */
+.topic {
+  margin-bottom: 0; /* 如果现在太大，改为 0 或更小 */
+}
+
+.hero {
+  margin-top: 0;    /* 如果蓝色区域太低，就减小或设为 0 */
+  padding-top: 60px; /* 如果要整体拉高蓝色块，改这个值 */
+}
