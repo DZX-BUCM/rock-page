@@ -1,4 +1,8 @@
 
+/* ################################################################################################################################################################### */
+/*                                                                      这是网页的主体函数                                                                              */
+/* ################################################################################################################################################################### */
+
 // —— 数据：可继续往下加；logo 可选（不填会自动用站点 favicon；失败则使用首字母） ——
 const SITES = [
 
@@ -427,4 +431,185 @@ window.applyCategory = function(cat){
 };
 
 
+/* ################################################################################################################################################################### */
+/*                                                                      这是分类函数                                                                                    */
+/* ################################################################################################################################################################### */
+
+// —— 分类按钮数据 ——
+const ROCK_ITEMS = [
+  { cat:'crack',        title:'破解教程',    desc:'白嫖党的快乐' },   
+  { cat:'research',     title:'学习资料',    desc:'一些学术论文和软件使用教程' },
+  { cat:'troubleshoot', title:'电脑问题',    desc:'使用软硬件的时候会遇到的一些问题解决方案' },
+  { cat:'download',     title:'下载专区',    desc:'我经常用的软件下载' },
+  { cat:'classics',     title:'国学典籍',    desc:'记录了一些网上的数字典籍资源' },
+  { cat:'tools',        title:'实用工具',    desc:'这是一些走南闯北积累的小脚本' },
+  { cat:'KG',           title:'知识图谱',    desc:'我的主要研究方向' },
+  { cat:'techology',    title:'技术专区',    desc:'主要是网站构建' },
+
+
+
+
+];
+
+(function initRock(){
+  const viewport = document.getElementById('rock-viewport');
+  const list     = document.getElementById('rock-list');
+  const prev     = document.querySelector('.rock-prev');
+  const next     = document.querySelector('.rock-next');
+  if (!viewport || !list) return;
+
+  // 1) 渲染卡片
+  list.innerHTML = ROCK_ITEMS.map(it => `
+    <a class="rock-item" href="#" data-cat="${it.cat}">
+      <div class="rock-title">${it.title}</div>
+      <div class="rock-desc">${it.desc || ""}</div>
+    </a>
+  `).join('');
+
+  // 2) 点击分类 -> 调用特效.js 的 applyCategory
+  list.addEventListener('click', (e) => {
+    const card = e.target.closest('.rock-item');
+    if (!card) return;
+    e.preventDefault();                           // 不跳转
+    const cat = card.dataset.cat;
+    if (window.applyCategory) window.applyCategory(cat);
+    // 可选：把当前卡片滚到中间
+    card.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+  });
+
+  // 3) 左右箭头
+  const step = () => Math.max(viewport.clientWidth * 0.8, 300);
+  if (prev) prev.addEventListener('click', () => viewport.scrollBy({ left:-step(), behavior:'smooth' }));
+  if (next) next.addEventListener('click', () => viewport.scrollBy({ left: step(), behavior:'smooth' }));
+
+  // 4) 纵向滚轮 -> 横向滚动
+  viewport.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      viewport.scrollLeft += e.deltaY;
+    }
+  }, { passive:false });
+})();
+
+
   
+
+/* ################################################################################################################################################################### */
+/*                                                                      这是搜索引擎函数                                                                                */
+/* ################################################################################################################################################################### */
+
+// —— 搜索引擎配置 ——
+const ENGINES = [
+  {
+    id: "site",
+    name: "站内",
+    placeholder: "站内搜索（筛选下面的卡片）",
+    action: (q) => {
+      // 复用你现有的筛选逻辑（来自特效.js）
+      if (typeof render === "function" && typeof filter === "function") {
+        render(filter(q));
+        // 同步顶栏小搜索框（如果没隐藏）
+        const topInput = document.querySelector("#q");
+        if (topInput) topInput.value = q;
+      } else {
+        console.warn("未找到 render/filter，无法站内搜索");
+      }
+    },
+  },
+  {
+    id: "baidu",
+    name: "百度",
+    placeholder: "百度一下你就知道",
+    url: (q) => `https://www.baidu.com/s?wd=${encodeURIComponent(q)}`
+  },
+  {
+    id: "google",
+    name: "Google",
+    placeholder: "Google 搜索",
+    url: (q) => `https://www.google.com/search?q=${encodeURIComponent(q)}`
+  },
+  {
+    id: "taobao",
+    name: "淘宝",
+    placeholder: "淘宝商品搜索",
+    url: (q) => `https://s.taobao.com/search?q=${encodeURIComponent(q)}`
+  },
+  {
+    id: "bing",
+    name: "Bing",
+    placeholder: "微软Bing搜索",
+    url: (q) => `https://www.bing.com/search?q=${encodeURIComponent(q)}`
+  },
+];
+
+(function initHeroSearch(){
+  const input = document.getElementById("search-input");
+  const btn   = document.getElementById("search-btn");
+  const pills = document.getElementById("engine-pills");
+
+  if (!input || !btn || !pills) return;
+
+  // 生成引擎 Pills
+  ENGINES.forEach((e, idx) => {
+    const pill = document.createElement("button");
+    pill.className = "engine-pill" + (e.id === "bing" ? " active" : "");
+    pill.dataset.engine = e.id;
+    pill.textContent = e.name;
+    pill.addEventListener("click", () => setActiveEngine(e.id));
+    pills.appendChild(pill);
+    if (idx === ENGINES.length - 1) setActiveEngine("bing"); // 默认 Bing
+  });
+
+  function currentEngine(){
+    const id = pills.querySelector(".engine-pill.active")?.dataset.engine || "bing";
+    return ENGINES.find(e => e.id === id) || ENGINES[0];
+  }
+
+  function setActiveEngine(id){
+    pills.querySelectorAll(".engine-pill").forEach(p => p.classList.toggle("active", p.dataset.engine === id));
+    const eng = ENGINES.find(e => e.id === id) || ENGINES[0];
+    input.placeholder = eng.placeholder || "搜索";
+    input.focus();
+  }
+
+  function runSearch(){
+    const q = input.value.trim();
+    if (!q) { input.focus(); return; }
+    const eng = currentEngine();
+    if (eng.action) {
+      eng.action(q);              // 站内
+    } else if (eng.url) {
+      window.open(eng.url(q), "_blank", "noopener");  // 外部搜索
+    }
+  }
+
+  btn.addEventListener("click", runSearch);
+  input.addEventListener("keydown", e => { if (e.key === "Enter") runSearch(); });
+})();
+
+
+
+/* ################################################################################################################################################################### */
+/*                                                                      这是题头函数                                                                                    */
+/* ################################################################################################################################################################### */
+
+// 轻量交互：切换激活项 & 移动端展开
+(function(){
+  const bar = document.getElementById('topic-bar');
+  const menuBtn = document.getElementById('topic-menu-btn');
+  const nav = document.getElementById('topic-nav');
+
+  if (menuBtn && bar) {
+    menuBtn.addEventListener('click', () => bar.classList.toggle('open'));
+  }
+
+  if (nav) {
+    nav.addEventListener('click', (e) => {
+      const a = e.target.closest('.nav-item');
+      if (!a) return;
+      nav.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+      a.classList.add('active');
+      // 这里可以按需要触发你的对应内容切换
+    });
+  }
+})();

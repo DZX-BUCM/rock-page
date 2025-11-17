@@ -1,0 +1,534 @@
+/* ################################################################################################################################################################### */
+/*                                                                      这是网页主体样式                                                                                */
+/* ################################################################################################################################################################### */
+
+:root {
+    --bg:#f6f7fb; --card:#fff; --text:#111827; --muted:#6b7280;
+    --line:#e5e7eb; --primary:#2563eb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);background:var(--bg)}
+  .topbar{position:sticky;top:0;display:flex;gap:12px;align-items:center;padding:12px 16px;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .brand{font-weight:800}
+  .input{flex:1;min-width:240px;padding:10px 12px;border:1px solid var(--line);border-radius:10px}
+
+  /* 每行数量 */
+  .grid{
+    /* max-width:1400px;  ← 删掉它！ */
+    margin:12px 0 24px;  /* ← 推荐这样，左右不留白 */
+    padding:0 16px;
+    display:grid;
+    grid-template-columns:repeat(6, minmax(0,1fr));
+    gap:12px;
+  }
+  
+  
+  /* —— 卡片 —— */
+  a.card{
+    position:relative;display:flex;align-items:center;gap:12px;
+    padding:14px 16px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;text-decoration:none;color:inherit;
+    box-shadow:0 1px 2px rgba(0,0,0,.04); transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease
+  }
+  a.card:hover{
+    transform:translateY(-1px);
+    border-color:#dbeafe; box-shadow:0 8px 24px rgba(37,99,235,.10)
+  }
+  
+  /* 左上角序号圆点 */
+  .card .badge{
+    position:absolute;left:-8px;top:-8px;width:26px;height:26px;border-radius:999px;
+    display:flex;align-items:center;justify-content:center;
+    background:#fff;border:1px solid var(--line);font-size:12px;font-weight:700;color:#334155
+  }
+  
+  /* 图标 */
+  .logo{
+    width:44px;height:44px;border-radius:12px;overflow:hidden;flex-shrink:0;
+    background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-weight:800;color:#475569
+  }
+  .logo img{width:100%;height:100%;display:block}
+  .logo .fallback{font-size:16px}
+  
+  /* 文本 */
+  .content{min-width:0;display:flex;flex-direction:column;gap:4px}
+  .name{
+    font-weight:700;font-size:16px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+  }
+  .desc{
+    font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+  }
+  
+  /* 右侧域名 */
+  .host{
+    margin-left:auto;font-size:12px;color:var(--muted);min-width:60px;max-width:40%;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:right
+  }
+  
+  /* 空状态 */
+  .empty{
+    border:1px dashed var(--line);padding:24px;text-align:center;color:var(--muted);
+    border-radius:16px;background:#fff;grid-column:1/-1
+  }
+  padding:0 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
+  .head{display:flex;gap:10px;align-items:center}
+  .favicon{width:40px;height:40px;border-radius:12px;background:#fee2e2;color:#b91c1c;display:flex;align-items:center;justify-content:center;font-weight:700}
+  .title{min-width:0}
+  .name{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .desc{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:12px;border:1px solid var(--line);padding:2px 8px;border-radius:999px;background:#fff}
+  .footer{display:flex;justify-content:space-between;align-items:center}
+  .muted{font-size:12px;color:var(--muted)}
+  .actions{display:flex;gap:8px}
+  .btn{padding:6px 10px;border-radius:10px;cursor:pointer}
+  .btn.outline{border:1px solid var(--line);background:#fff}
+  .empty{border:1px dashed var(--line);padding:24px;text-align:center;color:var(--muted);border-radius:16px;background:#fff;grid-column:1/-1}
+  
+
+/* 覆盖 rock 自带的左右外边距，避免再缩进去 */
+.rock{ margin: 12px 0 4px !important; }
+
+/* （可选）箭头更贴边一些 */
+.rock-prev{ left: clamp(8px, 2vw, 24px); }
+.rock-next{ right: clamp(8px, 2vw, 24px); }
+
+
+/* 调整搜索区（.hero）整体高度 */
+.hero {
+  min-height: 400px;   /* 控制最小高度，默认可能是 200 左右 */
+  padding: 80px 0;     /* 上下留白，数值越大越高 */
+}
+
+/* 如果标题和搜索框之间太挤，可以额外调 */
+.hero .hero-title {
+  margin-bottom: 30px; /* 调整标题与搜索框之间距离 */
+}
+
+
+/* ################################################################################################################################################################### */
+/*                                                                      这是搜索框部分样式                                                                              */
+/* ################################################################################################################################################################### */
+
+/* ——— 背景 Banner（动效版） ——— */
+.hero {
+  position: relative;
+  margin: 16px;
+  padding: 36px 16px 28px;
+  border-radius: 10px;
+  color: #fff;
+  overflow: hidden;
+
+  /* 关键：配色 + 动态渐变 */
+  background: linear-gradient(
+    120deg,
+    #ffe7ba,
+    #ffd6e0,
+    #e3b8ff,
+    #c7d8ff,
+    #b3f0ff,
+    #ffe7f0
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 14s ease infinite;
+}
+
+/* 动画流动效果 */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 柔化 + 微光层 */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
+/* 内容保持在前面 */
+.hero * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* 标题层保持在前面 */
+.hero-title {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin: 0 0 18px;
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: .5px;
+  text-shadow: 0 2px 6px rgba(0,0,0,.35);
+}
+
+/* ——— 顶部 Tab ——— */
+.hero-tabs {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.hero-tabs .tab {
+  border: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  transition: all 0.25s ease;
+}
+.hero-tabs .tab:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+.hero-tabs .tab.active {
+  background: #fff;
+  color: #111827;
+}
+
+  /* ——— 搜索输入区 ——— */
+  .search-wrap{
+    position:relative; z-index:1; max-width:820px; margin:0 auto 18px; display:flex; align-items:center;
+  }
+  .search-input{
+    flex:1; height:56px; border-radius:14px; border:4px solid rgba(255,255,255,.2);
+    padding:0 64px 0 18px; outline:none; font-size:16px;
+    background:#fff; color:#111;
+    box-shadow:0 10px 24px rgba(0,0,0,.18), inset 0 0 0 1px rgba(229,231,235,1);
+  }
+  .search-btn{
+    position:absolute; right:10px; height:40px; min-width:44px; border-radius:12px; 
+    border:none; cursor:pointer; font-weight:800; color:#fff; background:#3b82f6;
+    box-shadow:0 6px 18px rgba(59,130,246,.45);
+  }
+  
+  /* ——— 引擎选择 Pills ——— */
+  .engine-pills{
+    position:relative; z-index:1; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+  }
+  .engine-pill{
+    position:relative; padding:8px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.08); color:#fff; cursor:pointer; font-weight:700;
+  }
+  .engine-pill.active{ background:#fff; color:#111827; border-color:#fff; }
+  .engine-pill.active::before{
+    content:""; position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+    border-left:8px solid transparent; border-right:8px solid transparent; border-bottom:8px solid #fff;
+  }
+  
+  /* 小屏优化 */
+  @media (max-width:640px){
+    .hero-title{ font-size:26px; }
+    .search-input{ height:50px; }
+  }
+  
+/* ################################################################################################################################################################### */
+/*                                                                      这是分类栏样式                                                                                  */
+/* ################################################################################################################################################################### */
+
+/* ==============================
+   滚动栏：自适应等宽卡片 + 滚动
+   ============================== */
+
+/* 一屏显示多少个卡片 + 一些可调参数 */
+:root{
+  --rock-per-view: 5;        /* 默认一屏 5 个卡片 */
+  --rock-gap:16px;           /* 卡片之间的间距 */
+  --rock-item-h:88px;        /* 卡片高度 */
+  --rock-edge-fade:#ffffff;  /* 两侧渐隐颜色 */
+
+  /* 不再需要 --rock-item-w，这里删掉 */
+}
+
+/* 不同屏幕宽度下，一屏显示数量 */
+@media (max-width: 1440px){ :root{ --rock-per-view: 4; } }
+@media (max-width: 1024px){ :root{ --rock-per-view: 3; } }
+@media (max-width: 768px){  :root{ --rock-per-view: 2; } }
+@media (max-width: 480px){  :root{ --rock-per-view: 1; } }
+
+/* 外层容器 */
+.rock{
+  position: relative;
+  margin: 12px auto 4px;   /* 居中 + 跟 hero / grid 一样 */
+  padding: 0 16px 0 16px;  /* ⭐ 左边 40px，就是你喜欢的那种距离 */
+  box-sizing: border-box;  /* ⭐ 让 padding 算在宽度里，避免超出 */
+}
+
+
+/* 滚动视口 */
+.rock-viewport{
+  position:relative;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:12px 0;
+  scroll-snap-type:x mandatory;
+  -ms-overflow-style:none;
+  scrollbar-width:none;
+  scrollbar-gutter: stable both-edges; /* 避免滚动条出现时跳动 */
+}
+
+/* 横向滚动列表：用 grid 做等宽列 */
+.rock-list{
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--rock-gap);
+
+  /* 每列宽度 = (容器宽度 - 总间距) / 一屏显示数量 */
+  grid-auto-columns: calc(
+    (100% - (var(--rock-gap) * (var(--rock-per-view) - 1)))
+    / var(--rock-per-view)
+  );
+}
+
+/* 每个卡片：宽度随着列自动拉伸，视觉样式在这里统一写 */
+.rock-item{
+  scroll-snap-align:start;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  width:100%;
+  min-width:0;              /* 交给 grid 控制宽度 */
+  height:var(--rock-item-h);
+
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px 16px;
+  text-decoration:none;
+  color:inherit;
+  box-sizing:border-box;
+
+  box-shadow:0 1px 2px rgba(0,0,0,.05);
+  transition:
+    transform .12s ease,
+    box-shadow .12s ease,
+    background .2s ease,
+    color .2s ease;
+}
+
+.rock-item:hover{
+  transform:translateY(-1px);
+  background:linear-gradient(180deg,#7dd3fc 0%,#60a5fa 100%);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 14px 28px rgba(59,130,246,.25);
+}
+.rock-item:hover .rock-desc{
+  color:rgba(255,255,255,.95);
+}
+
+/* 文本样式 */
+.rock-title{
+  font-weight:800;
+}
+.rock-desc{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:2px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* 右下角小贴纸（你暂时用不到，可以先隐藏） */
+.rock-item .rock-bubble{
+  display:none !important;
+}
+
+/* 左右箭头按钮 */
+.rock-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:#334155;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+  cursor:pointer;
+  z-index:2;
+}
+
+/* 调整滚动框箭头位置 */
+.rock-prev{ left:16px; }   /* 原来是 0 */
+.rock-next{ right:16px; }  /* 原来是 0 */
+
+
+/* 两侧渐隐遮罩（更像轮播效果） */
+.rock-viewport::before,
+.rock-viewport::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:36px;
+  pointer-events:none;
+  z-index:1;
+}
+.rock-viewport::before{
+  left:0;
+  background:linear-gradient(90deg, var(--rock-edge-fade), transparent);
+}
+.rock-viewport::after{
+  right:0;
+  background:linear-gradient(270deg, var(--rock-edge-fade), transparent);
+}
+
+/* 滚动条样式（可选） */
+.rock-viewport::-webkit-scrollbar{
+  height:8px;
+}
+.rock-viewport::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,0.2);
+  border-radius:4px;
+}
+
+/* 小屏：整体稍微收紧一点 */
+@media (max-width:640px){
+  .rock{
+    margin:8px 8px 0;
+  }
+}
+
+
+
+/* ################################################################################################################################################################### */
+/*                                                                      这是顶部栏样式                                                                                  */
+/* ################################################################################################################################################################### */
+
+/* =============================
+   一键可调参数（改这里就行）
+   ============================= */
+   :root{
+    /* —— 颜色 —— */
+    --topic-primary:#ffffff;           /* 顶部细蓝条 & 强调色 */
+    --topic-bg:#ffffff;               /* 题头白色底 */
+    --topic-text:#111827;             /* 主文字 */
+    --topic-muted:#6b7280;            /* 副标题/浅色文字 */
+    --topic-border:#e5e7eb;           /* 边框线 */
+    --topic-icon:#374151;             /* 右侧小图标颜色 */
+    --topic-login:#3b82f6;            /* 登录按钮色 */
+    --topic-badge-red:#ef4444;        /* “精选” 红标 */
+    --topic-badge-sand-bg:#fde68a;    /* “New” 背景 */
+    --topic-badge-sand-text:#92400e;  /* “New” 文字 */
+  
+    /* —— 功能 / 布局开关 —— */
+    --topic-pad-x:0;                  /* 左右间距：0=贴边；12px=有留白 */
+    --topic-bar-radius:0;             /* 顶部条圆角：0=直角；14px=圆角卡片 */
+    --topic-topline-h:0px;            /* 顶部细蓝条高度：0=不显示 */
+    --topic-border-x:0;               /* 左右边框：0=无；1px solid var(--topic-border)=有 */
+  
+    /* —— 尺寸（可不改） —— */
+    --topic-shadow:0 2px 8px rgba(0,0,0,.06);
+    --topic-nav-gap:16px;
+    --topic-menu-w:38px;
+    --topic-menu-h:34px;
+  }
+  
+  /* =============================
+     题头样式（下面一般不用改）
+     ============================= */
+  
+  /* 仅作用于题头，避免影响你现有样式 */
+  .topic{ position:sticky; top:0; z-index:50; padding:6px var(--topic-pad-x) 0; }
+  .topic .bar{
+    position:relative; display:flex; align-items:center; gap:12px;
+    background:var(--topic-bg); border:1px solid var(--topic-border);
+    border-left:var(--topic-border-x); border-right:var(--topic-border-x);
+    border-radius:var(--topic-bar-radius);
+    padding:8px 10px; box-shadow:var(--topic-shadow);
+  }
+  .topic .bar::before{ /* 顶部细蓝条 */
+    content:""; position:absolute; left:0; right:0; top:-6px;
+    height:var(--topic-topline-h);
+    background:var(--topic-primary); border-radius:8px 8px 0 0;
+  }
+  
+  /* 品牌区 */
+  .topic .brand{ display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none; }
+  .topic .brand img{ width:40px; height:40px; border-radius:10px; display:block; }
+  .topic .brand-text strong{ display:block; line-height:1; color:var(--topic-text); }
+  .topic .brand-text small{ display:block; font-size:12px; color:var(--topic-muted); }
+  
+  /* 导航 */
+  .topic .nav{ position:relative; display:flex; align-items:center; gap:var(--topic-nav-gap); margin-left:10px; }
+  .topic .nav::after{ /* 顶部 “可商用” 提示 */
+    content:attr(data-note);
+    position:absolute; top:-18px; left:50%; transform:translateX(-50%);
+    font-size:12px; font-weight:700; color:#fff; background:var(--topic-primary); border-radius:6px;
+    padding:2px 6px;
+  }
+  .topic .nav-item{
+    display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:8px;
+    color:#374151; text-decoration:none; font-weight:700; background:transparent;
+  }
+  .topic .nav-item .chev{
+    width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+    transform:rotate(-45deg); display:inline-block; margin-left:2px;
+  }
+  .topic .nav-item.active{ background:#f3f4f6; }
+  .topic .badge{ font-size:11px; padding:2px 6px; border-radius:6px; font-weight:800; }
+  .topic .badge-red{ background:var(--topic-badge-red); color:#fff; }
+  .topic .badge-sand{ background:var(--topic-badge-sand-bg); color:var(--topic-badge-sand-text); }
+  
+/* === 居中对齐部分 === */
+html, body { margin:0; }
+.topic { padding:0; }
+.topic .bar {
+  display:flex;
+  align-items:center;
+  height:64px;
+  padding:0 20px;
+  border:0;
+  box-shadow:none;
+  justify-content:center;
+}
+.topic .brand { display:flex; align-items:center; }
+.topic .brand img { width:40px; height:40px; }
+.topic .nav-item { display:inline-flex; align-items:center; }
+.topic .bar::before { display:none; }
+
+/* === 调整顶部导航文字间距 === */
+.topic .nav {
+  gap:50px; /* 控制导航项之间的间距 */
+  margin-left: 60px; /* ← 控制“邮箱直达”和“AI导航”的水平距离 */
+}
+.topic .nav-item {
+  padding:6px 12px; /* 控制每个导航文字内部留白 */
+}
+/* 调整 logo 与品牌文字间距 */
+.topic .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 默认大约是 10px，这里调成 12px 或更大 */
+}
+
+/* 也可以直接精确控制图片和文字距离 */
+.topic .brand img {
+  margin-right: 12px; /* 调整 logo 与右边文字的间隔 */
+}
+
+/* 调整顶部导航与下方内容的距离 */
+.topic {
+  margin-bottom: 0; /* 如果现在太大，改为 0 或更小 */
+}
+
+.hero {
+  margin-top: 0;    /* 如果蓝色区域太低，就减小或设为 0 */
+  padding-top: 60px; /* 如果要整体拉高蓝色块，改这个值 */
+}

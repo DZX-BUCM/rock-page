@@ -1,0 +1,157 @@
+/* =========================
+   漂亮侧边栏（展开 + 折叠）
+   ========================= */
+
+/* 整个侧边栏容器 */
+.sidebar {
+    position: fixed;
+
+    top: 72px;        /* ⭐ 从导航栏下方开始，不盖住顶部 */
+    height: calc(100vh - 72px);   /* ⭐ 高度减去导航栏的高度 */
+
+    left: 0;
+    width: 240px;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+
+    padding: 20px 12px;
+    padding-top: 20px; /* ⭐ 不需要 80px 了，恢复正常间距 */
+
+    transition: width 0.25s ease;
+    overflow: hidden;
+    z-index: 200;
+    border-radius: 20px;   /* ⭐ 加上这一行即可 */
+}
+
+  
+  /* 收起：变成细细一条，只放图标 */
+  .sidebar.collapsed {
+    width: 64px;
+  }
+  
+  /* 每一项按钮 */
+  .side-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  
+    width: 100%;
+    padding: 8px 12px;
+  
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  
+    font-size: 14px;
+    color: #111827;
+    text-align: left;
+  
+    transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  }
+  
+  /* 鼠标滑上去的效果 */
+  .side-item:hover {
+    background: #eff6ff;
+    color: #1d4ed8;
+    transform: translateX(2px);
+  }
+  
+  /* 左侧小图标 */
+  .side-icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  
+  /* 文字部分 */
+  .side-text {
+    white-space: nowrap;
+  }
+  
+  /* 收起时：隐藏文字，只保留图标居中 */
+  .sidebar.collapsed .side-text {
+    display: none;
+  }
+  
+  .sidebar.collapsed .side-item {
+    justify-content: center;
+    padding-inline: 0;
+  }
+  
+  /* =========================
+     折叠/展开蓝色按钮
+     ========================= */
+  
+     .sidebar-toggle {
+        position: fixed;
+        top: 15px;        /* 你可以调 80 / 100 看自己喜欢 */
+        left: 15px;       /* 永远固定在左边，不再靠侧边栏 */
+      
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: #2563eb;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+      
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+        box-shadow: 0 10px 25px rgba(37,99,235,0.5);
+        z-index: 600;      /* 永远在顶部栏上面 */
+        transition: transform 0.15s ease;
+      }
+      
+      .sidebar-toggle:active {
+        transform: scale(.95);
+      }
+      
+  
+  
+  /* =========================
+     主内容整体右移
+     ========================= */
+  
+  .main-wrapper {
+    margin-left: 240px;
+    transition: margin-left 0.25s ease;
+  }
+  
+  .main-wrapper.collapsed {
+    margin-left: 64px;
+  }
+  
+
+  /* === 让题头横向铺满整个屏幕 === */
+.topic {
+    position: fixed;     /* 固定在页面顶部 */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;        /* 比侧边栏还高一点 */
+  
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 题头里的白色条也铺满宽度 */
+  .topic .bar {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;    /* 上下直角，看起来像一整条顶栏 */
+  }
+  
+  .main-wrapper {
+    margin-left: 240px;     /* 你原来的 */
+    padding-top: 72px;      /* ⭐ 新增：给顶部导航留位置 */
+    transition: margin-left 0.25s ease;
+  }
+  
