@@ -12,7 +12,7 @@ const SITES = [
     name: "office",
     url: "https://blog.csdn.net/huazn612/article/details/109289960",
     desc: "找不到注册类三联弹窗问题",
-    logo: "https://cdn-icons-png.flaticon.com/512/732/732221.png"
+    logo: "favicon/office.png"
   },
   {
     name: "node.js",
@@ -21,14 +21,16 @@ const SITES = [
     logo: "https://nodejs.org/static/images/logo.svg"
   },
   {
-    name: "需要来自Trust的权限",
+    name: "系统问题",
     url: "https://blog.csdn.net/qngfeng/article/details/105932018",
-    desc: "一些电脑常见问题",
+    desc: "需要来自Trust的权限",
+    logo: "https://cdn-icons-png.flaticon.com/512/732/732221.png"
   },
   {
-    name: "word运行错误",
+    name: "office",
     url: "https://blog.csdn.net/qq_38789150/article/details/117655181",
-    desc: "解决运行报错问题",
+    desc: "word运行报错问题",
+    logo: "favicon/office.png"
   },
 
 
@@ -51,6 +53,7 @@ const SITES = [
     name: "托福单词",
     url: "https://blog.csdn.net/qq_33957603/article/details/130328628?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-130328628-blog-72852143.235%5ev43%5epc_blog_bottom_relevance_base6&spm=1001.2101.3001.4242.1&utm_relevant_index=3",
     desc: "单词学习",
+    logo: "favicon/tu9.png"
   },
 
 
@@ -68,11 +71,13 @@ const SITES = [
     name: "Europe PMC",
     url: "https://europepmc.org/article/MED/34725513",
     desc: "下载英文文献",
+    logo: "favicon/tu10.png"
   },
   {
     name: "SCI-HUB",
     url: "https://sci-hub.usualwant.com/",
     desc: "下载英文文献",
+    logo: "favicon/tu11.png"
   },
   {
     name: "谷歌学术人工智能",
@@ -149,29 +154,38 @@ const SITES = [
     name: "Bigjpg",
     url: "https://bigjpg.com/zh",
     desc: "图片清晰化工具",
+    logo: "favicon/tu7.png"
   },
   {
     name: "labelme",
     url: "https://blog.csdn.net/cenbug/article/details/124944291",
-    desc: "图片标注工具",
+    desc: "稳定的图片标注工具",
+    logo: "favicon/CSDN.png"
   },
   {
     name: "Google 翻译",
     url: "https://translate.google.com/?hl=zh-CN&tab=TT&sl=auto&tl=en&op=translate",
     desc: "在线翻译工具",
+    logo: "favicon/tu14.png"
   },
   {
     name: "pubmed pro",
     url: "https://medcite.cn/search/nature%20biomedical%20engineering?content=2&iFactor=0,7&threshold=0.8",
     desc: "文献检索工具",
-    logo: "favicon/pubmed.svg"
+    logo: "favicon/TU12.png"
   },
   {
-    name: "免费图床",
+    name: "SM.MS",
     url: "https://sm.ms/",
-    desc: "图床工具",
+    desc: "免费稳定的图床工具",
+    logo: "favicon/tu13.png"
   },
-
+  {
+    name: "freecompress",
+    url: "https://freecompress.com/zh-cn/compress-image",
+    desc: "图片压缩工具",
+    logo: "favicon/tu1.jpg"
+  },
 
 
 
@@ -180,15 +194,16 @@ const SITES = [
 // ----------------------------------------------------------------------------------------国学典籍 ---------------------------------------------------------------------------------------------------------------——
 
   {
-    name: "红楼梦电子书",
+    name: "红楼梦",
     url: "https://hongloumeng.5000yan.com/",
-    desc: "满纸荒唐言，一把辛酸泪",
+    desc: "红楼梦电子书",
     logo: "favicon/book.png"
   },
   {
-    name: "红楼梦电子书",
+    name: "红楼梦",
     url: "https://www.guoxuemeng.com/guoxue/hongloumeng/",
-    desc: "好风凭借力，送我上青云",
+    desc: "红楼梦电子书",
+    logo: "favicon/tu15.png"
   },
 
 
@@ -208,36 +223,37 @@ const SITES = [
 // ----------------------------------------------------------------------------------------技术专区 ---------------------------------------------------------------------------------------------------------------——
 
   {
-    name: "个人网站教程",
+    name: "网站搭建",
     url: "https://www.bilibili.com/video/BV1ts4y1f7Gu/?spm_id_from=333.337.search-card.all.click&vd_source=151ea1245ea510a36b1ff687d1ce2b87",
-    desc: "个人网站技术栈",
+    desc: "构建个人网站的总体教程",
+    logo: "favicon/tu2.png"
   },
   {
     name: "HEXO部署",
     url: "https://www.codeprj.com/blog/6a45771.html",
     desc: "个人网站技术栈",
+    logo: "favicon/tu2.png"
   },
 
   {
     name: "npm install报错",
     url: "https://blog.csdn.net/qq_63358859/article/details/134920380",
     desc: "个人网站技术栈",
+    logo: "favicon/tu2.png"
   },
 
   {
     name: "解决npm警告",
     url: "https://blog.csdn.net/tombosky/article/details/135819263",
     desc: "个人网站技术栈",
+    logo: "favicon/tu2.png"
   },
-  {
-    name: "压缩图片",
-    url: "https://freecompress.com/zh-cn/compress-image",
-    desc: "个人网站技术栈",
-  },
+
   {
     name: "在线markdown编辑器",
     url: "https://markdown.com.cn/editor/",
     desc: "个人网站技术栈",
+    logo: "favicon/tu2.png"
   },
 
 
@@ -407,7 +423,7 @@ window.applyCategory = function(cat){
   const MAP = {
     crack:       ['破解'],
     research:    ['学术','论文','安装','教程'],
-    troubleshoot:['技术','问题'],
+    troubleshoot:['问题'],
     download:    ['网盘','下载','云盘'],
     classics:    ['小说','喜马拉雅','典籍','红楼梦'],
     tools:       ['工具'],
@@ -444,7 +460,7 @@ const ROCK_ITEMS = [
   { cat:'classics',     title:'国学典籍',    desc:'记录了一些网上的数字典籍资源' },
   { cat:'tools',        title:'实用工具',    desc:'这是一些走南闯北积累的小脚本' },
   { cat:'KG',           title:'知识图谱',    desc:'我的主要研究方向' },
-  { cat:'techology',    title:'技术专区',    desc:'主要是网站构建' },
+  { cat:'techology',    title:'技术积累',    desc:'主要是网站构建' },
 
 
 
