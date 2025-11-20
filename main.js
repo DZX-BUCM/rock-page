@@ -186,7 +186,12 @@ const SITES = [
     desc: "图片压缩工具",
     logo: "favicon/tu1.jpg"
   },
-
+  {
+    name: "哲风壁纸",
+    url: "https://haowallpaper.com/",
+    desc: "免费壁纸工具",
+    logo: "favicon/zhefengbizhi.ico"
+  },
 
 
 
@@ -206,7 +211,19 @@ const SITES = [
     logo: "favicon/tu15.png"
   },
 
+  {
+    name: "黄帝内经",
+    url: "https://www.cngwzj.com/tangshi300/3403.html",
+    desc: "黄帝内经素问（注音版）",
+    logo: "favicon/guwenzhijia.png"
+  },
 
+  {
+    name: "黄帝内经",
+    url: "https://www.cngwzj.com/tangshi300/3436.html",
+    desc: "黄帝内经灵枢（注音版）",
+    logo: "favicon/guwenzhijia.png"
+  },
 
 
 
@@ -425,7 +442,7 @@ window.applyCategory = function(cat){
     research:    ['学术','论文','安装','教程'],
     troubleshoot:['问题'],
     download:    ['网盘','下载','云盘'],
-    classics:    ['小说','喜马拉雅','典籍','红楼梦'],
+    classics:    ['小说','喜马拉雅','典籍','红楼梦','黄帝内经'],
     tools:       ['工具'],
     KG:          ['Neo4j'],
     techology:   ['技术'],
