@@ -402,25 +402,30 @@
 .rock-next{ right:16px; }  /* 原来是 0 */
 
 
-/* 两侧渐隐遮罩（更像轮播效果） */
-.rock-viewport::before,
-.rock-viewport::after{
+/* 两侧渐隐遮罩（根据 .rock 的 padding 自动对齐） */
+.rock::before,
+.rock::after{
   content:"";
   position:absolute;
   top:0;
   bottom:0;
   width:36px;
   pointer-events:none;
-  z-index:1;
+  z-index:10;
 }
-.rock-viewport::before{
-  left:0;
-  background:linear-gradient(90deg, var(--rock-edge-fade), transparent);
+
+/* 左侧渐变 */
+.rock::before{
+  left: 16px;  /* ← 和 .rock 的 padding-left 一样 */
+  background: linear-gradient(90deg, var(--rock-edge-fade), transparent);
 }
-.rock-viewport::after{
-  right:0;
-  background:linear-gradient(270deg, var(--rock-edge-fade), transparent);
+
+/* 右侧渐变 */
+.rock::after{
+  right: 16px; /* ← 和 .rock 的 padding-right 一样 */
+  background: linear-gradient(270deg, var(--rock-edge-fade), transparent);
 }
+
 
 /* 滚动条样式（可选） */
 .rock-viewport::-webkit-scrollbar{
