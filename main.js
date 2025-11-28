@@ -193,8 +193,8 @@ const SITES = [
     logo: "favicon/zhefengbizhi.ico"
   },
   {
-    name: "GPT代充值工具",
-    url: "https://rock.reffish.cn/",
+    name: "OpenAI KG",
+    url: "https://upchatgpt.com/",
     desc: "国内充值GPT工具",
     logo: "favicon/chongzhi.png"
   },
