@@ -192,6 +192,13 @@ const SITES = [
     desc: "免费壁纸工具",
     logo: "favicon/zhefengbizhi.ico"
   },
+  {
+    name: "GPT代充值工具",
+    url: "https://rock.reffish.cn/",
+    desc: "国内充值GPT工具",
+    logo: "favicon/chongzhi.png"
+  },
+
 
 
 
