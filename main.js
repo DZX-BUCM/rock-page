@@ -86,7 +86,7 @@ const SITES = [
     logo: "favicon/google.png"
   },
   {
-    name: "通用机场及教程",
+    name: "通用机场下载及使用教程",
     url: "https://wangpan.yfjc.my/",
     desc: "可以使用任何你想要的机场",
     logo: "favicon/jichang.png"
