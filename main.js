@@ -85,11 +85,17 @@ const SITES = [
     desc: "下载英文文献",
     logo: "favicon/google.png"
   },
+  {
+    name: "通用机场及教程",
+    url: "https://wangpan.yfjc.my/",
+    desc: "可以使用任何你想要的机场",
+    logo: "favicon/jichang.png"
+  },
+  
 
 
 
-
-
+  
 
 
 
@@ -198,7 +204,12 @@ const SITES = [
     desc: "国内充值GPT工具",
     logo: "favicon/chongzhi.png"
   },
-
+  {
+    name: "Aizex",
+    url: "https://aizex.net/usersDocument",
+    desc: "各种模型的合租面板",
+    logo: "favicon/mogu.png"
+  },
 
 
 
