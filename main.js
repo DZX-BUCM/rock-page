@@ -461,7 +461,7 @@ window.applyCategory = function(cat){
     troubleshoot:['问题'],
     download:    ['网盘','下载','云盘'],
     classics:    ['小说','喜马拉雅','典籍','红楼梦','黄帝内经'],
-    tools:       ['工具'],
+    tools:       ['工具','Aizex'],
     KG:          ['Neo4j'],
     techology:   ['技术'],
   };
