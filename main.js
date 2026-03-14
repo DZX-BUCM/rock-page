@@ -1,13 +1,14 @@
+/* =========================================================
+   1) 网站数据
+   这里只放“内容数据”，以后你新增网站，直接往这里加
+   ========================================================= */
 
-/* ################################################################################################################################################################### */
-/*                                                                      这是网页的主体函数                                                                              */
-/* ################################################################################################################################################################### */
-
-// —— 数据：可继续往下加；logo 可选（不填会自动用站点 favicon；失败则使用首字母） ——
+// logo 可选：
+// 1. 写本地路径，例如 "favicon/office.png"
+// 2. 写完整网络地址
+// 3. 不写 logo，就会自动尝试：本地图标 -> Google favicon -> 首字母
 const SITES = [
-
-// ----------------------------------------------------------------------------------------电脑问题 ---------------------------------------------------------------------------------------------------------------——
-
+  // ========================= 电脑问题 =========================
   {
     name: "office",
     url: "https://blog.csdn.net/huazn612/article/details/109289960",
@@ -33,16 +34,7 @@ const SITES = [
     logo: "favicon/office.png"
   },
 
-
-
-
-
-
-
-
-
-// ----------------------------------------------------------------------------------------学习资料 ---------------------------------------------------------------------------------------------------------------——
-
+  // ========================= 学习资料 =========================
   {
     name: "中国知网",
     url: "https://xztg.cnki.net/",
@@ -56,17 +48,7 @@ const SITES = [
     logo: "favicon/tu9.png"
   },
 
-
-
-
-
-
-
-
-
-
-
-// ----------------------------------------------------------------------------------------下载专区---------------------------------------------------------------------------------------------------------------——
+  // ========================= 下载专区 =========================
   {
     name: "Europe PMC",
     url: "https://europepmc.org/article/MED/34725513",
@@ -91,16 +73,20 @@ const SITES = [
     desc: "可以使用任何你想要的机场",
     logo: "favicon/jichang.png"
   },
-  
+  {
+    name: "魔塔社区",
+    url: "https://www.modelscope.cn/home",
+    desc: "很多大语言模型这里都能找到",
+    logo: "favicon/mota.png"
+  },
+  {
+    name: "24bit无损下载",
+    url: "https://www.24bit.net/",
+    desc: "下载母带级别的音乐，但是要收费哦",
+    logo: "favicon/mogu.png"
+  },
 
-
-
-  
-
-
-
-// ----------------------------------------------------------------------------------------知识图谱 ---------------------------------------------------------------------------------------------------------------——
-
+  // ========================= 知识图谱 =========================
   {
     name: "Neo4j",
     url: "https://www.w3cschool.cn/neo4j/",
@@ -144,18 +130,7 @@ const SITES = [
     logo: "https://neo4j.com/favicon.ico"
   },
 
-
-
-
-
-
-
-
-  
-
-
-// ----------------------------------------------------------------------------------------实用工具 ---------------------------------------------------------------------------------------------------------------——
-
+  // ========================= 实用工具 =========================
   {
     name: "Bigjpg",
     url: "https://bigjpg.com/zh",
@@ -210,12 +185,26 @@ const SITES = [
     desc: "各种模型的合租面板",
     logo: "favicon/mogu.png"
   },
+  {
+    name: "Vidu AI",
+    url: "https://www.vidu.cn/create/img2video",
+    desc: "把图片转化成视频的工具",
+    logo: "favicon/vidu ai.png"
+  },
+  {
+    name: "video to frames",
+    url: "https://videotoframes.com/zh",
+    desc: "视频逐帧转化工具",
+    logo: "favicon/video to frames.png"
+  },
+  {
+    name: "deepseek API",
+    url: "https://platform.deepseek.com/usage",
+    desc: "deepseek API充值工具",
+    logo: "favicon/shizi.png"
+  },
 
-
-
-
-// ----------------------------------------------------------------------------------------国学典籍 ---------------------------------------------------------------------------------------------------------------——
-
+  // ========================= 国学典籍 =========================
   {
     name: "红楼梦",
     url: "https://hongloumeng.5000yan.com/",
@@ -228,14 +217,12 @@ const SITES = [
     desc: "红楼梦电子书",
     logo: "favicon/tu15.png"
   },
-
   {
     name: "黄帝内经",
     url: "https://www.cngwzj.com/tangshi300/3403.html",
     desc: "黄帝内经素问（注音版）",
     logo: "favicon/guwenzhijia.png"
   },
-
   {
     name: "黄帝内经",
     url: "https://www.cngwzj.com/tangshi300/3436.html",
@@ -243,20 +230,7 @@ const SITES = [
     logo: "favicon/guwenzhijia.png"
   },
 
-
-
-
-
-
-
-
-
-
-
-
-
-// ----------------------------------------------------------------------------------------技术专区 ---------------------------------------------------------------------------------------------------------------——
-
+  // ========================= 技术专区 =========================
   {
     name: "网站搭建",
     url: "https://www.bilibili.com/video/BV1ts4y1f7Gu/?spm_id_from=333.337.search-card.all.click&vd_source=151ea1245ea510a36b1ff687d1ce2b87",
@@ -269,21 +243,18 @@ const SITES = [
     desc: "个人网站技术栈",
     logo: "favicon/tu2.png"
   },
-
   {
     name: "npm install报错",
     url: "https://blog.csdn.net/qq_63358859/article/details/134920380",
     desc: "个人网站技术栈",
     logo: "favicon/tu2.png"
   },
-
   {
     name: "解决npm警告",
     url: "https://blog.csdn.net/tombosky/article/details/135819263",
     desc: "个人网站技术栈",
     logo: "favicon/tu2.png"
   },
-
   {
     name: "在线markdown编辑器",
     url: "https://markdown.com.cn/editor/",
@@ -291,109 +262,167 @@ const SITES = [
     logo: "favicon/tu2.png"
   },
 
-
-
-
-
-
-
-
-
-
-
-
-
-// ----------------------------------------------------------------------------------------软件破解 ---------------------------------------------------------------------------------------------------------------——
-
+  // ========================= 软件破解 =========================
   {
     name: "Xmind破解",
     url: "https://www.cnblogs.com/wushiyiwuzhong/p/17803638.html",
-    desc: "软件破解",
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
+    desc: "软件破解"
+  }
 ];
 
-const $ = s => document.querySelector(s);
-const grid = $("#grid");
-const input = $("#q"); // 现在可能为 null
 
-// 只有存在时才加监听
-if (input) {
-  input.addEventListener("input", e => render(filter(e.target.value)));
+/* =========================================================
+   2) 分类栏数据
+   改 Hero 下方那排横向分类卡片，就看这里
+   ========================================================= */
+const ROCK_ITEMS = [
+  { cat: "crack",        title: "破解教程", desc: "白嫖党的快乐" },
+  { cat: "research",     title: "学习资料", desc: "一些学术论文和软件使用教程" },
+  { cat: "troubleshoot", title: "电脑问题", desc: "使用软硬件的时候会遇到的一些问题解决方案" },
+  { cat: "download",     title: "下载专区", desc: "我经常用的软件下载" },
+  { cat: "classics",     title: "国学典籍", desc: "记录了一些网上的数字典籍资源" },
+  { cat: "tools",        title: "实用工具", desc: "这是一些走南闯北积累的小脚本" },
+  { cat: "KG",           title: "知识图谱", desc: "我的主要研究方向" },
+  { cat: "techology",    title: "技术积累", desc: "主要是网站构建" } // 保持你原来的拼写，避免功能失效
+];
+
+
+/* =========================================================
+   3) 搜索引擎配置
+   改 Hero 搜索框里的搜索平台，看这里
+   ========================================================= */
+const ENGINES = [
+  {
+    id: "site",
+    name: "站内",
+    placeholder: "一般找不到的搜一下就找到了(●'◡'●)",
+    action: (q) => {
+      render(filter(q));
+
+      // 如果顶部那个小搜索框存在，同步内容
+      const topInput = document.getElementById("q");
+      if (topInput) topInput.value = q;
+    }
+  },
+  {
+    id: "baidu",
+    name: "百度",
+    placeholder: "是的我什么都知道",
+    url: (q) => `https://www.baidu.com/s?wd=${encodeURIComponent(q)}`
+  },
+  {
+    id: "google",
+    name: "Google",
+    placeholder: "是不是又偷偷翻墙啦？？？",
+    url: (q) => `https://www.google.com/search?q=${encodeURIComponent(q)}`
+  },
+  {
+    id: "taobao",
+    name: "淘宝",
+    placeholder: "来淘点宝贝吧~",
+    url: (q) => `https://s.taobao.com/search?q=${encodeURIComponent(q)}`
+  },
+  {
+    id: "bing",
+    name: "Bing",
+    placeholder: "嗨~今天有什么想问的？",
+    url: (q) => `https://www.bing.com/search?q=${encodeURIComponent(q)}`
+  }
+];
+
+
+/* =========================================================
+   4) Hero 标题轮播文案
+   改搜索框上面那句会切换的大字，看这里
+   ========================================================= */
+const HERO_ROTATING_LINES = [
+  "小Dの门面 ✦",
+  "走南闯北的一些经验哦 ૮ ˶ᵔ ᵕ ᵔ˶ ა",
+  "可以试着联系站长鸭 ♡",
+  "call me hero of computer 嘿嘿 ᕦ(ò_óˇ)ᕤ"
+];
+
+
+/* =========================================================
+   5) 基础工具函数
+   这些是“辅助函数”，一般不用频繁改
+   ========================================================= */
+
+// 更短的选择器写法
+const $ = (selector) => document.querySelector(selector);
+
+// 安全获取 host，例如：www.baidu.com
+function getHost(url) {
+  try {
+    return new URL(url).host;
+  } catch (err) {
+    return "";
+  }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  render(SITES);
-  if (input) input.placeholder = "搜索名称 / 描述 / 标签（JS OK）";
-});
+// 生成本地默认图标文件名
+// 例如：node.js -> /favicon/nodejs.svg 和 /favicon/nodejs.png
+function getDefaultLogoPaths(siteName) {
+  const safeName = String(siteName || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
 
-
-
-// 获取本地图标的函数
-function getDefaultLogo(siteName) {
-  const safeSiteName = siteName.toLowerCase().replace(/[^a-z0-9]/g, '');
-  const iconPathSvg = `/favicon/${safeSiteName}.svg`;  // 使用相对路径
-  const iconPathPng = `/favicon/${safeSiteName}.png`;  // 使用相对路径
-  
-  return iconPathSvg; // 优先返回 svg
+  return {
+    svg: `/favicon/${safeName}.svg`,
+    png: `/favicon/${safeName}.png`
+  };
 }
 
-// 修改 makeLogoBox 函数，添加回退逻辑
+// 所有图标都失败后，显示首字母
+function setLogoFallback(box, siteName) {
+  box.innerHTML = `<span class="fallback">${String(siteName || "?")[0].toUpperCase()}</span>`;
+}
+
+
+/* =========================================================
+   6) Logo 逻辑
+   作用：给每个网站卡片生成左侧图标
+   ========================================================= */
+
 function makeLogoBox(site) {
-  const host = new URL(site.url).host;
   const box = document.createElement("div");
-  box.className = "logo";
   const img = new Image();
+  const host = getHost(site.url);
+  const localLogo = getDefaultLogoPaths(site.name);
+
+  box.className = "logo";
   img.alt = site.name;
 
-  // 如果没有指定logo，优先尝试本地图标
-  if (!site.logo) {
-    const localLogoSvg = getDefaultLogo(site.name);
-    const localLogoPng = localLogoSvg.replace('.svg', '.png');
-    
-    img.src = localLogoSvg;
-    
+  // 情况 1：用户自己写了 logo
+  // 顺序：指定 logo -> 本地 svg -> 本地 png -> 首字母
+  if (site.logo) {
+    img.src = site.logo;
+
     img.onerror = () => {
-      // 如果 SVG 加载失败，尝试加载 PNG 图标
-      img.src = localLogoPng;
+      img.src = localLogo.svg;
+
       img.onerror = () => {
-        // 如果 PNG 也加载失败，使用 Google 的 favicon
-        img.src = `https://www.google.com/s2/favicons?domain=${host}&sz=64`;
+        img.src = localLogo.png;
+
         img.onerror = () => {
-          // 如果所有加载失败，显示站点首字母
-          box.innerHTML = `<span class="fallback">${site.name[0].toUpperCase()}</span>`;
+          setLogoFallback(box, site.name);
         };
       };
     };
-  } else {
-    // 如果已经指定了logo，直接使用指定的logo
-    img.src = site.logo;
-    
+  }
+  // 情况 2：用户没写 logo
+  // 顺序：本地 svg -> 本地 png -> Google favicon -> 首字母
+  else {
+    img.src = localLogo.svg;
+
     img.onerror = () => {
-      // 指定 logo 加载失败后，回退到本地图标
-      const localLogoSvg = getDefaultLogo(site.name);
-      const localLogoPng = localLogoSvg.replace('.svg', '.png');
-      
-      img.src = localLogoSvg;
+      img.src = localLogo.png;
+
       img.onerror = () => {
-        img.src = localLogoPng;
+        img.src = `https://www.google.com/s2/favicons?domain=${host}&sz=64`;
+
         img.onerror = () => {
-          // 如果本地图标也加载失败，显示首字母
-          box.innerHTML = `<span class="fallback">${site.name[0].toUpperCase()}</span>`;
+          setLogoFallback(box, site.name);
         };
       };
     };
@@ -404,18 +433,20 @@ function makeLogoBox(site) {
 }
 
 
+/* =========================================================
+   7) 卡片渲染区
+   作用：把 SITES 数据渲染成你页面上的网址卡片
+   ========================================================= */
 
-
-
-
+// 单个网站卡片
 function card(site, idx) {
   const el = document.createElement("a");
+  const host = getHost(site.url);
+
   el.className = "card";
   el.href = site.url;
   el.target = "_blank";
   el.rel = "noopener";
-
-  const host = new URL(site.url).host;
 
   el.innerHTML = `
     <span class="badge">${idx}</span>
@@ -426,241 +457,315 @@ function card(site, idx) {
     <div class="host" title="${host}">${host}</div>
   `;
 
-  // 把图标插到最前面
+  // 把 logo 插到卡片最前面
   el.insertBefore(makeLogoBox(site), el.firstChild);
+
   return el;
 }
 
+// 渲染整组卡片
 function render(list) {
+  const grid = $("#grid");
+  if (!grid) return;
+
   grid.innerHTML = "";
+
   if (!list.length) {
     grid.innerHTML = `<div class="empty">没有匹配到结果</div>`;
     return;
   }
-  list.forEach((s, i) => grid.appendChild(card(s, i + 1)));
+
+  list.forEach((site, index) => {
+    grid.appendChild(card(site, index + 1));
+  });
 }
 
-function filter(q) {
-  q = q.trim().toLowerCase();
+// 搜索过滤
+function filter(keyword) {
+  const q = String(keyword || "").trim().toLowerCase();
+
   if (!q) return SITES;
-  return SITES.filter(s =>
-    s.name.toLowerCase().includes(q) ||
-    (s.desc || "").toLowerCase().includes(q) ||
-    (s.url || "").toLowerCase().includes(q) ||
-    (s.tags || []).some(t => String(t).toLowerCase().includes(q))
-  );
+
+  return SITES.filter((site) => {
+    const name = String(site.name || "").toLowerCase();
+    const desc = String(site.desc || "").toLowerCase();
+    const url = String(site.url || "").toLowerCase();
+    const tags = Array.isArray(site.tags) ? site.tags : [];
+
+    return (
+      name.includes(q) ||
+      desc.includes(q) ||
+      url.includes(q) ||
+      tags.some(tag => String(tag).toLowerCase().includes(q))
+    );
+  });
 }
 
 
-// —— 分类过滤：优先 cats，其次 tags，最后用关键词兜底 ——
-window.applyCategory = function(cat){
-  // 每个分类对应会命中的 tag/关键词（大小写不敏感）
-  const MAP = {
-    crack:       ['破解'],
-    research:    ['学术','论文','安装','教程'],
-    troubleshoot:['问题'],
-    download:    ['网盘','下载','云盘'],
-    classics:    ['小说','喜马拉雅','典籍','红楼梦','黄帝内经'],
-    tools:       ['工具','Aizex'],
-    KG:          ['Neo4j'],
-    techology:   ['技术'],
-  };
+/* =========================================================
+   8) 分类过滤逻辑
+   作用：点击横向分类栏时，筛选对应的网站卡片
+   ========================================================= */
 
-  function hitCats(s){ return Array.isArray(s.cats) && s.cats.map(String).includes(cat); }
-  function hitTags(s){
-    const expect = (MAP[cat]||[]).map(x=>String(x).toLowerCase());
-    const tags   = (s.tags||[]).map(x=>String(x).toLowerCase());
-    return tags.some(t => expect.some(e => t.includes(e)));
-  }
-  function hitKW(s){
-    const hay = (s.name + ' ' + (s.desc||'')).toLowerCase();
-    return (MAP[cat]||[]).some(w => hay.includes(String(w).toLowerCase()));
+// 每个分类对应的“关键词命中规则”
+// 优先 cats，再看 tags，最后用 name + desc 兜底匹配
+const CATEGORY_MAP = {
+  crack: ["破解"],
+  research: ["学术", "论文", "安装", "教程"],
+  troubleshoot: ["问题"],
+  download: ["网盘", "下载", "云盘"],
+  classics: ["小说", "喜马拉雅", "典籍", "红楼梦", "黄帝内经"],
+  tools: ["工具", "Aizex"],
+  KG: ["Neo4j"],
+  techology: ["技术"]
+};
+
+// 提供给外部用，保持你原来的调用方式不变
+window.applyCategory = function (cat) {
+  const expectedWords = (CATEGORY_MAP[cat] || []).map(word => String(word).toLowerCase());
+
+  function hitCats(site) {
+    return Array.isArray(site.cats) && site.cats.map(String).includes(cat);
   }
 
-  const list = SITES.filter(s => hitCats(s) || hitTags(s) || hitKW(s));
-  render(list.length ? list : SITES); // 没命中就显示全部，避免空白
+  function hitTags(site) {
+    const tags = (site.tags || []).map(tag => String(tag).toLowerCase());
+    return tags.some(tag => expectedWords.some(word => tag.includes(word)));
+  }
+
+  function hitKeyword(site) {
+    const text = `${site.name || ""} ${site.desc || ""}`.toLowerCase();
+    return expectedWords.some(word => text.includes(word));
+  }
+
+  const result = SITES.filter(site => hitCats(site) || hitTags(site) || hitKeyword(site));
+
+  // 没匹配到时，仍显示全部，避免页面空掉
+  render(result.length ? result : SITES);
 };
 
 
-/* ################################################################################################################################################################### */
-/*                                                                      这是分类函数                                                                                    */
-/* ################################################################################################################################################################### */
+/* =========================================================
+   9) 横向分类栏初始化
+   作用：渲染 ROCK_ITEMS，并绑定点击、左右滚动、鼠标滚轮横移
+   ========================================================= */
+function initRock() {
+  const viewport = document.getElementById("rock-viewport");
+  const list = document.getElementById("rock-list");
+  const prev = document.querySelector(".rock-prev");
+  const next = document.querySelector(".rock-next");
 
-// —— 分类按钮数据 ——
-const ROCK_ITEMS = [
-  { cat:'crack',        title:'破解教程',    desc:'白嫖党的快乐' },   
-  { cat:'research',     title:'学习资料',    desc:'一些学术论文和软件使用教程' },
-  { cat:'troubleshoot', title:'电脑问题',    desc:'使用软硬件的时候会遇到的一些问题解决方案' },
-  { cat:'download',     title:'下载专区',    desc:'我经常用的软件下载' },
-  { cat:'classics',     title:'国学典籍',    desc:'记录了一些网上的数字典籍资源' },
-  { cat:'tools',        title:'实用工具',    desc:'这是一些走南闯北积累的小脚本' },
-  { cat:'KG',           title:'知识图谱',    desc:'我的主要研究方向' },
-  { cat:'techology',    title:'技术积累',    desc:'主要是网站构建' },
-
-
-
-
-];
-
-(function initRock(){
-  const viewport = document.getElementById('rock-viewport');
-  const list     = document.getElementById('rock-list');
-  const prev     = document.querySelector('.rock-prev');
-  const next     = document.querySelector('.rock-next');
   if (!viewport || !list) return;
 
-  // 1) 渲染卡片
-  list.innerHTML = ROCK_ITEMS.map(it => `
-    <a class="rock-item" href="#" data-cat="${it.cat}">
-      <div class="rock-title">${it.title}</div>
-      <div class="rock-desc">${it.desc || ""}</div>
+  // 1. 渲染分类卡片
+  list.innerHTML = ROCK_ITEMS.map(item => `
+    <a class="rock-item" href="#" data-cat="${item.cat}">
+      <div class="rock-title">${item.title}</div>
+      <div class="rock-desc">${item.desc || ""}</div>
     </a>
-  `).join('');
+  `).join("");
 
-  // 2) 点击分类 -> 调用特效.js 的 applyCategory
-  list.addEventListener('click', (e) => {
-    const card = e.target.closest('.rock-item');
-    if (!card) return;
-    e.preventDefault();                           // 不跳转
-    const cat = card.dataset.cat;
-    if (window.applyCategory) window.applyCategory(cat);
-    // 可选：把当前卡片滚到中间
-    card.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+  // 2. 点击分类
+  list.addEventListener("click", (e) => {
+    const item = e.target.closest(".rock-item");
+    if (!item) return;
+
+    e.preventDefault();
+
+    const cat = item.dataset.cat;
+    if (window.applyCategory) {
+      window.applyCategory(cat);
+    }
+
+    // 点击后让当前分类尽量滚到中间
+    item.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest"
+    });
   });
 
-  // 3) 左右箭头
+  // 3. 左右箭头滚动
   const step = () => Math.max(viewport.clientWidth * 0.8, 300);
-  if (prev) prev.addEventListener('click', () => viewport.scrollBy({ left:-step(), behavior:'smooth' }));
-  if (next) next.addEventListener('click', () => viewport.scrollBy({ left: step(), behavior:'smooth' }));
 
-  // 4) 纵向滚轮 -> 横向滚动
-  viewport.addEventListener('wheel', (e) => {
+  if (prev) {
+    prev.addEventListener("click", () => {
+      viewport.scrollBy({ left: -step(), behavior: "smooth" });
+    });
+  }
+
+  if (next) {
+    next.addEventListener("click", () => {
+      viewport.scrollBy({ left: step(), behavior: "smooth" });
+    });
+  }
+
+  // 4. 鼠标滚轮：竖着滚 -> 横着滚
+  viewport.addEventListener("wheel", (e) => {
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
       viewport.scrollLeft += e.deltaY;
     }
-  }, { passive:false });
-})();
+  }, { passive: false });
+}
 
 
-  
-
-/* ################################################################################################################################################################### */
-/*                                                                      这是搜索引擎函数                                                                                */
-/* ################################################################################################################################################################### */
-
-// —— 搜索引擎配置 ——
-const ENGINES = [
-  {
-    id: "site",
-    name: "站内",
-    placeholder: "站内搜索（筛选下面的卡片）",
-    action: (q) => {
-      // 复用你现有的筛选逻辑（来自特效.js）
-      if (typeof render === "function" && typeof filter === "function") {
-        render(filter(q));
-        // 同步顶栏小搜索框（如果没隐藏）
-        const topInput = document.querySelector("#q");
-        if (topInput) topInput.value = q;
-      } else {
-        console.warn("未找到 render/filter，无法站内搜索");
-      }
-    },
-  },
-  {
-    id: "baidu",
-    name: "百度",
-    placeholder: "百度一下你就知道",
-    url: (q) => `https://www.baidu.com/s?wd=${encodeURIComponent(q)}`
-  },
-  {
-    id: "google",
-    name: "Google",
-    placeholder: "Google 搜索",
-    url: (q) => `https://www.google.com/search?q=${encodeURIComponent(q)}`
-  },
-  {
-    id: "taobao",
-    name: "淘宝",
-    placeholder: "淘宝商品搜索",
-    url: (q) => `https://s.taobao.com/search?q=${encodeURIComponent(q)}`
-  },
-  {
-    id: "bing",
-    name: "Bing",
-    placeholder: "微软Bing搜索",
-    url: (q) => `https://www.bing.com/search?q=${encodeURIComponent(q)}`
-  },
-];
-
-(function initHeroSearch(){
+/* =========================================================
+   10) Hero 搜索初始化
+   作用：中间大搜索框 + 搜索引擎 pills
+   ========================================================= */
+function initHeroSearch() {
   const input = document.getElementById("search-input");
-  const btn   = document.getElementById("search-btn");
+  const btn = document.getElementById("search-btn");
   const pills = document.getElementById("engine-pills");
 
   if (!input || !btn || !pills) return;
 
-  // 生成引擎 Pills
-  ENGINES.forEach((e, idx) => {
+  // 生成搜索引擎按钮
+  pills.innerHTML = "";
+
+  ENGINES.forEach((engine) => {
     const pill = document.createElement("button");
-    pill.className = "engine-pill" + (e.id === "bing" ? " active" : "");
-    pill.dataset.engine = e.id;
-    pill.textContent = e.name;
-    pill.addEventListener("click", () => setActiveEngine(e.id));
+    pill.className = "engine-pill";
+    pill.dataset.engine = engine.id;
+    pill.textContent = engine.name;
+
+    pill.addEventListener("click", () => {
+      setActiveEngine(engine.id);
+    });
+
     pills.appendChild(pill);
-    if (idx === ENGINES.length - 1) setActiveEngine("bing"); // 默认 Bing
   });
 
-  function currentEngine(){
-    const id = pills.querySelector(".engine-pill.active")?.dataset.engine || "bing";
-    return ENGINES.find(e => e.id === id) || ENGINES[0];
+  // 当前激活的搜索引擎
+  function currentEngine() {
+    const activeId =
+      pills.querySelector(".engine-pill.active")?.dataset.engine || "bing";
+
+    return ENGINES.find(engine => engine.id === activeId) || ENGINES[0];
   }
 
-  function setActiveEngine(id){
-    pills.querySelectorAll(".engine-pill").forEach(p => p.classList.toggle("active", p.dataset.engine === id));
-    const eng = ENGINES.find(e => e.id === id) || ENGINES[0];
-    input.placeholder = eng.placeholder || "搜索";
+  // 设置当前激活搜索引擎
+  function setActiveEngine(id) {
+    pills.querySelectorAll(".engine-pill").forEach((pill) => {
+      pill.classList.toggle("active", pill.dataset.engine === id);
+    });
+
+    const engine = ENGINES.find(item => item.id === id) || ENGINES[0];
+    input.placeholder = engine.placeholder || "搜索";
     input.focus();
   }
 
-  function runSearch(){
+  // 执行搜索
+  function runSearch() {
     const q = input.value.trim();
-    if (!q) { input.focus(); return; }
-    const eng = currentEngine();
-    if (eng.action) {
-      eng.action(q);              // 站内
-    } else if (eng.url) {
-      window.open(eng.url(q), "_blank", "noopener");  // 外部搜索
+    if (!q) {
+      input.focus();
+      return;
+    }
+
+    const engine = currentEngine();
+
+    if (engine.action) {
+      engine.action(q); // 站内搜索
+    } else if (engine.url) {
+      window.open(engine.url(q), "_blank", "noopener"); // 外部搜索
     }
   }
 
   btn.addEventListener("click", runSearch);
-  input.addEventListener("keydown", e => { if (e.key === "Enter") runSearch(); });
-})();
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      runSearch();
+    }
+  });
+
+  // 默认激活 Bing（保持你原来的效果）
+  setActiveEngine("bing");
+}
 
 
+/* =========================================================
+   11) 顶部题头交互
+   作用：导航高亮 + 移动端菜单展开
+   ========================================================= */
+function initTopicBar() {
+  const bar = document.getElementById("topic-bar");
+  const menuBtn = document.getElementById("topic-menu-btn");
+  const nav = document.getElementById("topic-nav");
 
-/* ################################################################################################################################################################### */
-/*                                                                      这是题头函数                                                                                    */
-/* ################################################################################################################################################################### */
-
-// 轻量交互：切换激活项 & 移动端展开
-(function(){
-  const bar = document.getElementById('topic-bar');
-  const menuBtn = document.getElementById('topic-menu-btn');
-  const nav = document.getElementById('topic-nav');
-
+  // 移动端菜单展开
   if (menuBtn && bar) {
-    menuBtn.addEventListener('click', () => bar.classList.toggle('open'));
-  }
-
-  if (nav) {
-    nav.addEventListener('click', (e) => {
-      const a = e.target.closest('.nav-item');
-      if (!a) return;
-      nav.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-      a.classList.add('active');
-      // 这里可以按需要触发你的对应内容切换
+    menuBtn.addEventListener("click", () => {
+      bar.classList.toggle("open");
     });
   }
-})();
+
+  // 点击导航项时切换 active
+  if (nav) {
+    nav.addEventListener("click", (e) => {
+      const item = e.target.closest(".nav-item");
+      if (!item) return;
+
+      nav.querySelectorAll(".nav-item").forEach(navItem => {
+        navItem.classList.remove("active");
+      });
+
+      item.classList.add("active");
+    });
+  }
+}
+
+
+/* =========================================================
+   12) Hero 标题轮播
+   作用：搜索框上面的动态文案切换
+   ========================================================= */
+function initHeroTitleRotate() {
+  const el = document.getElementById("hero-rotating-text");
+  if (!el) return;
+
+  let current = 0;
+  el.textContent = HERO_ROTATING_LINES[current];
+
+  setInterval(() => {
+    el.classList.add("is-changing");
+
+    setTimeout(() => {
+      current = (current + 1) % HERO_ROTATING_LINES.length;
+      el.textContent = HERO_ROTATING_LINES[current];
+      el.classList.remove("is-changing");
+    }, 420);
+  }, 8000);
+}
+
+
+/* =========================================================
+   13) 顶部小搜索框
+   作用：如果页面里有 #q，就支持实时搜索
+   ========================================================= */
+function initTopSearch() {
+  const input = document.getElementById("q");
+  if (!input) return;
+
+  input.addEventListener("input", (e) => {
+    render(filter(e.target.value));
+  });
+
+  input.placeholder = "搜索名称 / 描述 / 标签（JS OK）";
+}
+
+
+/* =========================================================
+   14) 页面启动入口
+   所有初始化都从这里开始，后面排查问题也最方便
+   ========================================================= */
+window.addEventListener("DOMContentLoaded", () => {
+  render(SITES);          // 先把全部网站卡片渲染出来
+  initTopSearch();        // 顶部小搜索
+  initRock();             // 横向分类栏
+  initHeroSearch();       // Hero 搜索框
+  initTopicBar();         // 顶部导航交互
+  initHeroTitleRotate();  // Hero 标题轮播
+});
