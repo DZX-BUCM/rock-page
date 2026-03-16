@@ -1,21 +1,21 @@
 /* =========================================================
-   1) 全局变量：常用颜色 / 间距 / 可调参数
-   以后想统一改风格，优先改这里
+   1) 全局变量：统一管理颜色 / 间距 / 尺寸
+   以后想整体改风格，先改这里
    ========================================================= */
 :root {
-  /* 基础配色 */
-  --bg: #f6f7fb;
-  --card: #fff;
-  --text: #111827;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --primary: #2563eb;
+  /* 页面基础颜色 */
+  --bg: #f6f7fb;               /* 页面背景色 */
+  --card: #fff;                /* 白色卡片背景 */
+  --text: #111827;             /* 主文字颜色 */
+  --muted: #6b7280;            /* 次要文字颜色 */
+  --line: #e5e7eb;             /* 边框线颜色 */
+  --primary: #2563eb;          /* 主蓝色 */
 
   /* 分类滚动栏（rock） */
-  --rock-per-view: 5;          /* 一屏默认显示 5 个卡片 */
-  --rock-gap: 16px;            /* 卡片间距 */
-  --rock-item-h: 88px;         /* 卡片高度 */
-  --rock-edge-fade: #ffffff;   /* 两侧渐隐遮罩颜色 */
+  --rock-per-view: 5;          /* 一屏默认显示几个分类卡片 */
+  --rock-gap: 16px;            /* 分类卡片之间的间距 */
+  --rock-item-h: 100px;        /* 分类卡片的最小高度 */
+  --rock-edge-fade: #ffffff;   /* 分类滚动区两侧渐隐的颜色 */
 
   /* 顶部导航（topic） */
   --topic-primary: #ffffff;
@@ -27,54 +27,68 @@
   --topic-badge-sand-bg: #fde68a;
   --topic-badge-sand-text: #92400e;
 
+  /* 顶部导航的补充参数 */
   --topic-pad-x: 0;
   --topic-bar-radius: 0;
   --topic-border-x: 0;
+  
+  /* rock 卡片里滚动栏标题、描述和图标的独立位置控制 */
+  --rock-icon-x: 13px;   /* 图标左右 */
+  --rock-icon-y: 13px;   /* 图标上下 */
+
+  --rock-title-x: 50px;   /* 标题左右 */
+  --rock-title-y: -10px; /* 标题上下 */
+
+  --rock-desc-left: 130px; /* 描述基础左边距 */
+  --rock-desc-x: 20px;      /* 描述左右微调 */
+  --rock-desc-y: -30px;    /* 描述上下微调 */
+
+  --rock-enter-x: -20px;         /* 圆圈箭头左右微调 */
+  --rock-enter-y: 0px;        /* 圆圈箭头上下微调 */
 }
 
-
 /* =========================================================
-   2) 页面基础
+   2) 页面基础设置
    ========================================================= */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box;      /* 让宽高计算更稳定 */
 }
 
 html,
 body {
-  margin: 0;
+  margin: 0;                   /* 去掉浏览器默认外边距 */
 }
 
 body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: var(--text);
-  background: var(--bg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; /* 字体 */
+  color: var(--text);          /* 默认文字颜色 */
+  background: var(--bg);       /* 页面背景色 */
 }
 
 
 /* =========================================================
-   3) 通用顶部输入条（如果页面里有 .topbar）
-   这一块你原来就有，我保留了
+   3) 顶部输入条（如果页面里有 .topbar）
+   这一块是通用输入区域
    ========================================================= */
 .topbar {
-  position: sticky;
+  position: sticky;            /* 滚动时吸顶 */
   top: 0;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
+  display: flex;               /* 横向排列 */
+  gap: 12px;                   /* 子元素间距 */
+  align-items: center;         /* 垂直居中 */
+  padding: 12px 16px;          /* 内边距 */
+  background: rgba(255, 255, 255, 0.85); /* 半透明白底 */
+  backdrop-filter: blur(8px);  /* 背景模糊 */
+  border-bottom: 1px solid var(--line);  /* 底部细线 */
 }
 
 .brand {
-  font-weight: 800;
+  font-weight: 800;            /* 品牌名加粗 */
 }
 
 .input {
-  flex: 1;
-  min-width: 240px;
+  flex: 1;                     /* 占满剩余空间 */
+  min-width: 240px;            /* 最小宽度 */
   padding: 10px 12px;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -83,51 +97,53 @@ body {
 
 /* =========================================================
    4) 主内容网格区
-   这里控制下面那一大片网址卡片
+   控制下面那一大片网址卡片
    ========================================================= */
 
-/* 每行 6 个卡片 */
+/* 一行显示 6 个网址卡片 */
 .grid {
-  margin: 12px 0 24px;
-  padding: 0 16px;
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 12px;
+  margin: 12px 0 24px;         /* 上下留白 */
+  padding: 0 16px;             /* 左右留白 */
+  display: grid;               /* 网格布局 */
+  grid-template-columns: repeat(6, minmax(0, 1fr)); /* 六列等宽 */
+  gap: 12px;                   /* 卡片间距 */
 }
 
-/* 单个卡片 */
+/* 单个网址卡片 */
 a.card {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  background: var(--card);
+  display: flex;               /* 图标 + 文本横向排列 */
+  align-items: center;         /* 垂直居中 */
+  gap: 12px;                   /* 图标和文字间距 */
+  padding: 14px 16px;          /* 卡片内边距 */
+  background: var(--card);     /* 白卡片 */
   border: 1px solid var(--line);
-  border-radius: 14px;
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  border-radius: 14px;         /* 圆角 */
+  text-decoration: none;       /* 去掉下划线 */
+  color: inherit;              /* 继承文字颜色 */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04); /* 很轻的阴影 */
+
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease,
     border-color 0.12s ease;
 }
 
+/* 鼠标移上去的状态 */
 a.card:hover {
-  transform: translateY(-1px);
-  border-color: #dbeafe;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.10);
+  transform: translateY(-1px); /* 轻微上浮 */
+  border-color: #dbeafe;       /* 边框变浅蓝 */
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.10); /* 阴影加重一点 */
 }
 
-/* 左上角序号圆点 */
+/* 左上角的小编号圆点 */
 .card .badge {
   position: absolute;
   left: -8px;
   top: -8px;
   width: 26px;
   height: 26px;
-  border-radius: 999px;
+  border-radius: 999px;        /* 圆形 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,13 +154,13 @@ a.card:hover {
   color: #334155;
 }
 
-/* 左侧图标 */
+/* 卡片左边的图标外框 */
 .logo {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  overflow: hidden;
-  flex-shrink: 0;
+  overflow: hidden;            /* 图片超出时裁掉 */
+  flex-shrink: 0;              /* 不允许被压缩 */
   background: #f3f4f6;
   display: flex;
   align-items: center;
@@ -153,33 +169,37 @@ a.card:hover {
   color: #475569;
 }
 
+/* 图标图片本体 */
 .logo img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
+/* 没图标时的备用文字 */
 .logo .fallback {
   font-size: 16px;
 }
 
 /* 中间文字区 */
 .content {
-  min-width: 0;
+  min-width: 0;                /* 允许省略号生效 */
   display: flex;
-  flex-direction: column;
+  flex-direction: column;      /* 上下排列 */
   gap: 4px;
 }
 
+/* 站点名称 */
 .name {
   font-weight: 700;
   font-size: 16px;
   line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: nowrap;         /* 不换行 */
+  overflow: hidden;            /* 超出隐藏 */
+  text-overflow: ellipsis;     /* 超出显示 ... */
 }
 
+/* 站点说明 */
 .desc {
   font-size: 13px;
   color: var(--muted);
@@ -190,7 +210,7 @@ a.card:hover {
 
 /* 右侧域名 */
 .host {
-  margin-left: auto;
+  margin-left: auto;           /* 自动推到最右边 */
   min-width: 60px;
   max-width: 40%;
   font-size: 12px;
@@ -201,9 +221,9 @@ a.card:hover {
   text-align: right;
 }
 
-/* 空状态 */
+/* 没有内容时的空状态 */
 .empty {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1;         /* 占满整行 */
   padding: 24px;
   text-align: center;
   color: var(--muted);
@@ -215,10 +235,10 @@ a.card:hover {
 
 /* =========================================================
    5) 搜索 Banner / Hero 区
-   这一块就是中间那块大背景 + 大标题 + 搜索框
+   就是中间大背景 + 大标题 + 搜索框
    ========================================================= */
 
-/* 主背景区 */
+/* 整个 Hero 大区域 */
 .hero {
   position: relative;
   margin: 16px;
@@ -228,16 +248,15 @@ a.card:hover {
   overflow: hidden;
   color: #fff;
 
-  /* 最终生效的背景：深色梦幻底 */
+  /* 多层渐变背景 */
   background:
     radial-gradient(circle at 18% 20%, rgba(255, 170, 210, 0.22), transparent 26%),
     radial-gradient(circle at 82% 22%, rgba(126, 220, 255, 0.18), transparent 28%),
     radial-gradient(circle at 50% 82%, rgba(186, 160, 255, 0.18), transparent 30%),
     linear-gradient(135deg, #5b3b79 0%, #334a7d 45%, #1d3b53 100%);
 
-  /* 你原代码里背景会动，这里保留 */
-  background-size: 400% 400%;
-  animation: gradientMove 14s ease infinite;
+  background-size: 400% 400%;  /* 放大背景，便于做流动动画 */
+  animation: gradientMove 14s ease infinite; /* 背景流动 */
 }
 
 /* 背景流动动画 */
@@ -247,11 +266,11 @@ a.card:hover {
   100% { background-position: 0% 50%; }
 }
 
-/* Hero 上面那层轻微遮罩 */
+/* Hero 上面那层遮罩 */
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0;                    /* 等于 top/right/bottom/left 全部 0 */
   background: linear-gradient(
     180deg,
     rgba(10, 14, 28, 0.16),
@@ -261,7 +280,7 @@ a.card:hover {
   z-index: 0;
 }
 
-/* Hero 内部内容始终压在背景上面 */
+/* 让 Hero 里的内容压在背景和遮罩上面 */
 .hero * {
   position: relative;
   z-index: 1;
@@ -270,29 +289,29 @@ a.card:hover {
 /* 标题整体容器 */
 .hero-title {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column;      /* 标题上下排列 */
+  align-items: center;         /* 水平居中 */
   gap: 10px;
   margin: 0 0 28px;
   text-align: center;
 }
 
-/* 标题上半句，例如“可以试着联系站长鸭”前面的引导文字 */
+/* 标题前缀 */
 .title-prefix {
   display: block;
-  font-size: clamp(22px, 2.4vw, 36px);
+  font-size: clamp(22px, 2.4vw, 36px); /* 自适应字号 */
   font-weight: 800;
   letter-spacing: 1px;
 }
 
-/* 给动态文字预留高度，避免切换时跳动 */
+/* 给动态标题留高度，避免切换时跳动 */
 .title-dynamic-wrap {
   display: block;
   min-height: 1.35em;
   padding: 0 10px;
 }
 
-/* 会变换的彩色大字 */
+/* 会变换的彩色大标题 */
 .hero-rotating-text {
   display: inline-block;
   font-size: clamp(34px, 4.4vw, 62px);
@@ -309,7 +328,7 @@ a.card:hover {
     #ffffff 100%
   );
   background-size: 240% auto;
-  -webkit-background-clip: text;
+  -webkit-background-clip: text; /* 文字裁剪渐变 */
   background-clip: text;
   color: transparent;
   text-shadow: none;
@@ -325,7 +344,7 @@ a.card:hover {
     filter 0.35s ease;
 }
 
-/* 动态文字切换时的过渡状态 */
+/* 动态标题切换时的过渡状态 */
 .hero-rotating-text.is-changing {
   opacity: 0;
   transform: translateY(10px) scale(0.98);
@@ -334,12 +353,13 @@ a.card:hover {
     drop-shadow(0 6px 18px rgba(0, 0, 0, 0.20));
 }
 
+/* 标题渐变流动动画 */
 @keyframes heroTextShine {
   0%   { background-position: 0% 50%; }
   100% { background-position: 240% 50%; }
 }
 
-/* 顶部 Tab */
+/* Hero 顶部 Tab 按钮区 */
 .hero-tabs {
   display: flex;
   justify-content: center;
@@ -347,6 +367,7 @@ a.card:hover {
   margin-bottom: 22px;
 }
 
+/* 单个 Tab */
 .hero-tabs .tab {
   border: none;
   cursor: pointer;
@@ -359,27 +380,30 @@ a.card:hover {
   transition: all 0.25s ease;
 }
 
+/* Tab 悬停 */
 .hero-tabs .tab:hover {
   background: rgba(255, 255, 255, 0.25);
 }
 
+/* 当前选中的 Tab */
 .hero-tabs .tab.active {
   background: #fff;
   color: #111827;
 }
 
-/* 搜索框区域 */
+/* 搜索框外层 */
 .search-wrap {
   max-width: 820px;
-  margin: 0 auto 18px;
+  margin: 0 auto 18px;         /* 居中 */
   display: flex;
   align-items: center;
 }
 
+/* 输入框 */
 .search-input {
   flex: 1;
   height: 56px;
-  padding: 0 64px 0 18px;
+  padding: 0 64px 0 18px;      /* 右边留按钮空间 */
   border: 4px solid rgba(255, 255, 255, 0.2);
   border-radius: 14px;
   outline: none;
@@ -391,6 +415,7 @@ a.card:hover {
     inset 0 0 0 1px rgba(229, 231, 235, 1);
 }
 
+/* 搜索按钮 */
 .search-btn {
   position: absolute;
   right: 10px;
@@ -405,7 +430,7 @@ a.card:hover {
   box-shadow: 0 6px 18px rgba(59, 130, 246, 0.45);
 }
 
-/* 搜索引擎切换按钮 */
+/* 搜索引擎切换按钮区域 */
 .engine-pills {
   display: flex;
   justify-content: center;
@@ -413,6 +438,7 @@ a.card:hover {
   gap: 12px;
 }
 
+/* 单个搜索引擎按钮 */
 .engine-pill {
   position: relative;
   padding: 8px 14px;
@@ -424,12 +450,14 @@ a.card:hover {
   font-weight: 700;
 }
 
+/* 当前选中的搜索引擎 */
 .engine-pill.active {
   background: #fff;
   color: #111827;
   border-color: #fff;
 }
 
+/* 当前选中时上面的小三角 */
 .engine-pill.active::before {
   content: "";
   position: absolute;
@@ -441,7 +469,7 @@ a.card:hover {
   border-bottom: 8px solid #fff;
 }
 
-/* 小屏幕下 Hero 稍微收紧 */
+/* 小屏幕下 Hero 缩紧一点 */
 @media (max-width: 640px) {
   .hero {
     min-height: 340px;
@@ -449,12 +477,13 @@ a.card:hover {
   }
 
   .hero-title {
-    gap: 8px;
+    gap: -20px;                        /* 调整标题和描述的距离 */
     margin-bottom: 22px;
   }
 
   .title-prefix {
-    font-size: 18px;
+    font-size: 20px;                   /* 调整标题的字体大小，字号 */
+    margin-bottom: 22px;
   }
 
   .hero-rotating-text {
@@ -472,124 +501,215 @@ a.card:hover {
    就是 Hero 下面那一排横向滚动分类卡片
    ========================================================= */
 
-/* 不同屏幕下，一屏显示几个卡片 */
-@media (max-width: 1440px) {
-  :root { --rock-per-view: 4; }
-}
 
-@media (max-width: 1024px) {
-  :root { --rock-per-view: 3; }
-}
-
-@media (max-width: 768px) {
-  :root { --rock-per-view: 2; }
-}
-
-@media (max-width: 480px) {
-  :root { --rock-per-view: 1; }
-}
-
-/* 外层容器 */
+/* 分类区最外层 */
 .rock {
   position: relative;
-  margin: 12px 0 4px !important; /* 保留你原来强制贴边的效果 */
+  margin: 12px 0 4px !important; /* 紧贴上面区域 */
   padding: 0 16px;
   box-sizing: border-box;
 }
 
-/* 横向滚动的可视区域 */
+/* 横向滚动可视区域 */
 .rock-viewport {
   position: relative;
-  overflow-x: auto;
+  overflow-x: auto;            /* 允许横向滚动 */
   overflow-y: hidden;
   padding: 12px 0;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory; /* 滚动时自动吸附到卡片 */
   scrollbar-gutter: stable both-edges;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
+/* Chrome 滚动条 */
 .rock-viewport::-webkit-scrollbar {
   height: 8px;
 }
 
+/* Chrome 滚动条滑块 */
 .rock-viewport::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
 
-/* 里面真正的横向列表 */
+/* 横向排列的分类列表 */
 .rock-list {
   display: grid;
-  grid-auto-flow: column;
+  grid-auto-flow: column;      /* 自动横向排 */
   gap: var(--rock-gap);
   grid-auto-columns: calc(
     (100% - (var(--rock-gap) * (var(--rock-per-view) - 1))) / var(--rock-per-view)
-  );
+  );                           /* 自动算出每张卡宽度 */
 }
 
 /* 单个分类卡片 */
 .rock-item {
+  position: relative;
   width: 100%;
   min-width: 0;
-  height: var(--rock-item-h);
-  padding: 12px 16px;
+  min-height: var(--rock-item-h);
+  height: auto;
+  padding: 0px 0px 0px;             /* 单个分类卡片的具体大小 */
   box-sizing: border-box;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: column;      /* 卡片内部上下排列 */
   justify-content: center;
+  gap: 8px;
 
-  scroll-snap-align: start;
+  scroll-snap-align: start;    /* 滚动时对齐起点 */
   text-decoration: none;
   color: inherit;
 
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+  border: 1px solid #e8edf5;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
 
   transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease,
-    background 0.2s ease,
-    color 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
+/* 分类卡片悬停 */
 .rock-item:hover {
-  transform: translateY(-1px);
-  background: linear-gradient(180deg, #7dd3fc 0%, #60a5fa 100%);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 14px 28px rgba(59, 130, 246, 0.25);
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.26);
+  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.12);
+  background: #ffffff;
 }
 
-.rock-item:hover .rock-desc {
-  color: rgba(255, 255, 255, 0.95);
+/* 当前选中的分类卡片 */
+.rock-item.active {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.32);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.12);
+}
+
+/* 分类卡片头部：左边图标+标题，右边箭头 */
+.rock-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* 左边主内容：图标 + 标题 */
+.rock-head-main {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--rock-head-gap);                /* 图标和标题之间的距离 */
+}
+
+/* 左边分类图标 */
+.rock-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;               /* 框里的图标变大 ，滚动框图标变大*/
+  line-height: 1;
+  flex-shrink: 0;              /* 不允许被压小 */
+  background: linear-gradient(180deg, #f5f8ff 0%, #eef4ff 100%);
+  border: 1px solid #e1e9ff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  transform: translate(var(--rock-icon-x), var(--rock-icon-y));   /* 图标位置往右和往下移动，（右，下）移动的距离 */
+}
+
+.rock-icon-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 右上角进入箭头，圆圈箭头 */
+.rock-enter {
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  color: #64748b;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+
+  position: relative;
+  left: var(--rock-enter-x);
+  top: var(--rock-enter-y);
+
+  transition:
+    transform 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+/* 箭头悬停和选中状态 */
+.rock-item:hover .rock-enter,
+.rock-item.active .rock-enter {
+  transform: translate(1px, -1px);
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.22);
+  background: #eff6ff;
 }
 
 /* 分类标题 */
 .rock-title {
+  font-size: 18px;
   font-weight: 800;
-}
-
-/* 分类描述 */
-.rock-desc {
-  margin-top: 2px;
-  font-size: 12px;
-  color: var(--muted);
+  line-height: 1.2;
+  color: #0f172a;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transform: translate(var(--rock-title-x), var(--rock-title-y));      /* 调整分类标题的上下位置的 */
 }
 
-/* 你原来注释里说暂时不用，这里继续隐藏 */
+/* 分类说明文字，分类描述部分
+   60 = 图标 44 + 间距 16
+   这样下面的小字会和标题左边对齐 */
+.rock-desc {
+  margin-left: var(--rock-desc-left);
+  margin-top: 0;
+  font-size: 14px;               /*分类描述的字体大小，字号调整*/
+  line-height: 1.45;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform: translate(var(--rock-desc-x), var(--rock-desc-y));
+}
+
+/* 分类标题 hover / active 状态 */
+.rock-item:hover .rock-title,
+.rock-item.active .rock-title {
+  color: #111827;
+}
+
+/* 分类说明 hover / active 状态 */
+.rock-item:hover .rock-desc,
+.rock-item.active .rock-desc {
+  color: #64748b;
+}
+
+/* 暂时隐藏小气泡 */
 .rock-item .rock-bubble {
   display: none !important;
 }
 
-/* 左右箭头：默认隐藏，悬停整个区域时出现 */
+/* 左右滚动箭头按钮 */
 .rock-arrow {
   position: absolute;
   top: 50%;
@@ -605,21 +725,23 @@ a.card:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   cursor: pointer;
 
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0;                  /* 默认隐藏 */
+  pointer-events: none;        /* 默认不能点 */
   transition: opacity 0.25s ease;
 }
 
+/* 鼠标移到整个分类区时，箭头才显示 */
 .rock:hover .rock-arrow {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* 箭头位置 */
+/* 左箭头位置 */
 .rock-prev {
   left: 16px;
 }
 
+/* 右箭头位置 */
 .rock-next {
   right: 16px;
 }
@@ -636,11 +758,13 @@ a.card:hover {
   z-index: 10;
 }
 
+/* 左侧渐隐 */
 .rock::before {
   left: 16px;
   background: linear-gradient(90deg, var(--rock-edge-fade), transparent);
 }
 
+/* 右侧渐隐 */
 .rock::after {
   right: 16px;
   background: linear-gradient(270deg, var(--rock-edge-fade), transparent);
@@ -659,6 +783,7 @@ a.card:hover {
   margin-bottom: 0;
 }
 
+/* 顶部整条导航栏 */
 .topic .bar {
   position: relative;
   display: flex;
@@ -684,6 +809,7 @@ a.card:hover {
   text-decoration: none;
 }
 
+/* 品牌 logo */
 .topic .brand img {
   width: 40px;
   height: 40px;
@@ -692,19 +818,21 @@ a.card:hover {
   margin-right: 12px;
 }
 
+/* 品牌主文字 */
 .topic .brand-text strong {
   display: block;
   line-height: 1;
   color: var(--topic-text);
 }
 
+/* 品牌副文字 */
 .topic .brand-text small {
   display: block;
   font-size: 12px;
   color: var(--topic-muted);
 }
 
-/* 导航区 */
+/* 顶部导航菜单区 */
 .topic .nav {
   position: relative;
   display: flex;
@@ -713,7 +841,7 @@ a.card:hover {
   margin-left: 60px;
 }
 
-/* 顶部的小提示条（如果 data-note 有值就会显示） */
+/* 顶部提示条（如果 data-note 有值才显示） */
 .topic .nav::after {
   content: attr(data-note);
   position: absolute;
@@ -728,6 +856,7 @@ a.card:hover {
   background: var(--topic-primary);
 }
 
+/* 顶部导航项 */
 .topic .nav-item {
   display: inline-flex;
   align-items: center;
@@ -740,11 +869,12 @@ a.card:hover {
   background: transparent;
 }
 
+/* 当前选中的导航项 */
 .topic .nav-item.active {
   background: #f3f4f6;
 }
 
-/* 小箭头 */
+/* 导航项右侧小箭头 */
 .topic .nav-item .chev {
   width: 8px;
   height: 8px;
@@ -755,7 +885,7 @@ a.card:hover {
   border-bottom: 2px solid currentColor;
 }
 
-/* 右上角标签：比如“精选”“New” */
+/* 顶部小标签 */
 .topic .badge {
   padding: 2px 6px;
   border-radius: 6px;
@@ -763,12 +893,55 @@ a.card:hover {
   font-weight: 800;
 }
 
+/* 红色标签 */
 .topic .badge-red {
   background: var(--topic-badge-red);
   color: #fff;
 }
 
+/* 黄色标签 */
 .topic .badge-sand {
   background: var(--topic-badge-sand-bg);
   color: var(--topic-badge-sand-text);
 }
+
+/* ===== 分类滚动框：固定样式，只整体缩放 ===== */
+
+.rock-list {
+  zoom: 1;
+  width: 100%;
+}
+
+/* 1600 以下，稍微缩一点 */
+@media (max-width: 1600px) {
+  .rock-list {
+    zoom: 0.92;
+    width: calc(100% / 0.92);
+  }
+}
+
+/* 1440 以下，再缩一点 */
+@media (max-width: 1440px) {
+  .rock-list {
+    zoom: 0.84;
+    width: calc(100% / 0.84);
+  }
+}
+
+/* 1280 以下，继续缩 */
+@media (max-width: 1280px) {
+  .rock-list {
+    zoom: 0.76;
+    width: calc(100% / 0.76);
+  }
+}
+
+/* 更小的屏幕 */
+@media (max-width: 1120px) {
+  .rock-list {
+    zoom: 0.68;
+    width: calc(100% / 0.68);
+  }
+}
+
+

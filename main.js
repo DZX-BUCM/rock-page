@@ -47,6 +47,13 @@ const SITES = [
     desc: "单词学习",
     logo: "favicon/tu9.png"
   },
+  {
+    name: "TED音频01",
+    url: "https://www.ted.com/talks/tarveen_forrester_let_your_ambition_light_you_up_not_burn_you_out",
+    desc: "listening",
+    logo: "favicon/qiyiguo.png"
+  },
+
 
   // ========================= 下载专区 =========================
   {
@@ -85,6 +92,14 @@ const SITES = [
     desc: "下载母带级别的音乐，但是要收费哦",
     logo: "favicon/mogu.png"
   },
+  {
+    name: "阿里矢量图标库",
+    url: "https://www.iconfont.cn/?spm=a313x.search_index.i3.d4d0a486a.4ffa3a81vKs7qJ",
+    desc: "下载所需的图标",
+    logo: "favicon/lianwu.png"
+  },
+
+
 
   // ========================= 知识图谱 =========================
   {
@@ -276,16 +291,15 @@ const SITES = [
    改 Hero 下方那排横向分类卡片，就看这里
    ========================================================= */
 const ROCK_ITEMS = [
-  { cat: "crack",        title: "破解教程", desc: "白嫖党的快乐" },
-  { cat: "research",     title: "学习资料", desc: "一些学术论文和软件使用教程" },
-  { cat: "troubleshoot", title: "电脑问题", desc: "使用软硬件的时候会遇到的一些问题解决方案" },
-  { cat: "download",     title: "下载专区", desc: "我经常用的软件下载" },
-  { cat: "classics",     title: "国学典籍", desc: "记录了一些网上的数字典籍资源" },
-  { cat: "tools",        title: "实用工具", desc: "这是一些走南闯北积累的小脚本" },
-  { cat: "KG",           title: "知识图谱", desc: "我的主要研究方向" },
-  { cat: "techology",    title: "技术积累", desc: "主要是网站构建" } // 保持你原来的拼写，避免功能失效
+  { cat: "crack",        iconImg: "favicon/pojie.png", title: "破解教程", desc: "常用破解经验" },
+  { cat: "research",     iconImg: "favicon/xuexiziliao.png", title: "学习资料", desc: "论文与软件教程" },
+  { cat: "troubleshoot", iconImg: "favicon/diannaowenti.png", title: "电脑问题", desc: "常见软硬件问题处理" },
+  { cat: "download",     icon: "⬇️", title: "下载专区", desc: "常用下载与资源入口" },
+  { cat: "classics",     iconImg: "favicon/guoxue.png", title: "国学典籍", desc: "数字典籍资源整理" },
+  { cat: "tools",        icon: "🧰", title: "实用工具", desc: "日常高频工具合集" },
+  { cat: "KG",           iconImg: "favicon/tupu.png", title: "知识图谱", desc: "我的主要研究方向" },
+  { cat: "techology",    iconImg: "favicon/jishu.png", title: "技术积累", desc: "网站搭建与前端记录" }
 ];
-
 
 /* =========================================================
    3) 搜索引擎配置
@@ -503,7 +517,7 @@ function filter(keyword) {
 
 
 /* =========================================================
-   8) 分类过滤逻辑
+   8) 分类过滤逻辑，就是怎么识别类别
    作用：点击横向分类栏时，筛选对应的网站卡片
    ========================================================= */
 
@@ -511,7 +525,7 @@ function filter(keyword) {
 // 优先 cats，再看 tags，最后用 name + desc 兜底匹配
 const CATEGORY_MAP = {
   crack: ["破解"],
-  research: ["学术", "论文", "安装", "教程"],
+  research: ["学术", "论文", "TED", "安装", "教程"],
   troubleshoot: ["问题"],
   download: ["网盘", "下载", "云盘"],
   classics: ["小说", "喜马拉雅", "典籍", "红楼梦", "黄帝内经"],
@@ -560,7 +574,17 @@ function initRock() {
   // 1. 渲染分类卡片
   list.innerHTML = ROCK_ITEMS.map(item => `
     <a class="rock-item" href="#" data-cat="${item.cat}">
-      <div class="rock-title">${item.title}</div>
+      <div class="rock-head">
+        <div class="rock-head-main">
+          <div class="rock-icon">
+            ${item.iconImg
+              ? `<img class="rock-icon-img" src="${item.iconImg}" alt="${item.title}">`
+              : (item.icon || "📁")}
+          </div>
+          <div class="rock-title">${item.title}</div>
+        </div>
+        <span class="rock-enter">↗</span>
+      </div>
       <div class="rock-desc">${item.desc || ""}</div>
     </a>
   `).join("");
@@ -569,15 +593,19 @@ function initRock() {
   list.addEventListener("click", (e) => {
     const item = e.target.closest(".rock-item");
     if (!item) return;
-
+  
     e.preventDefault();
-
+  
+    list.querySelectorAll(".rock-item").forEach(node => {
+      node.classList.remove("active");
+    });
+    item.classList.add("active");
+  
     const cat = item.dataset.cat;
     if (window.applyCategory) {
       window.applyCategory(cat);
     }
-
-    // 点击后让当前分类尽量滚到中间
+  
     item.scrollIntoView({
       behavior: "smooth",
       inline: "center",

@@ -16,7 +16,7 @@
     box-shadow: 2px 0 8px rgba(0,0,0,0.08);
 
     padding: 20px 12px;
-    padding-top: 20px; /* ⭐ 不需要 80px 了，恢复正常间距 */
+    padding-top: 72px; /* ⭐ 不需要 80px 了，恢复正常间距 */
 
     transition: width 0.25s ease;
     overflow: hidden;
@@ -99,18 +99,18 @@
   /* =========================
      折叠/展开蓝色按钮
      ========================= */
-  
-     .sidebar-toggle {
+      .sidebar-toggle {
         position: fixed;
-        top: 15px;        /* 你可以调 80 / 100 看自己喜欢 */
-        left: 15px;       /* 永远固定在左边，不再靠侧边栏 */
+        top: 84px;
+        left: 12px;
       
         width: 40px;
         height: 40px;
-        border-radius: 12px;
-        background: #2563eb;
-        color: #fff;
-        border: none;
+        border-radius: 14px;
+      
+        background: #f8fafc;
+        color: #64748b;
+        border: 1px solid #e5e7eb;
         cursor: pointer;
         font-size: 20px;
       
@@ -118,9 +118,38 @@
         align-items: center;
         justify-content: center;
       
-        box-shadow: 0 10px 25px rgba(37,99,235,0.5);
-        z-index: 600;      /* 永远在顶部栏上面 */
-        transition: transform 0.15s ease;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+        z-index: 600;
+      
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.2s ease,
+          background 0.2s ease,
+          color 0.2s ease,
+          border-color 0.2s ease;
+      }
+      
+      .sidebar-toggle:hover {
+        background: #ffffff;
+        color: #2563eb;
+        border-color: #dbeafe;
+        box-shadow: 0 8px 18px rgba(37, 99, 235, 0.10);
+        transform: translateY(-1px);
+      }
+      
+      .sidebar-toggle:active {
+        transform: scale(0.96);
+      }
+      
+      .sidebar-toggle:hover {
+        background: #f8fbff;
+        border-color: #bfdbfe;
+        box-shadow: 0 10px 24px rgba(37, 99, 235, 0.14);
+        transform: translateY(-1px);
+      }
+      
+      .sidebar-toggle:active {
+        transform: scale(0.96);
       }
       
       .sidebar-toggle:active {
