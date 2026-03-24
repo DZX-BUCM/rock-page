@@ -121,11 +121,11 @@
       <div class="bar" id="topic-bar">
 
         <!-- 品牌入口 / 邮箱直达 -->
-        <a class="brand" href="https://mail.google.com/mail/u/0/#inbox">
+        <a class="brand" href="../add/youxianghewangpan.html" target="_blank" rel="noopener">
           <img src="favicon/ico.png" alt="" onerror="this.style.display='none'" />
           <div class="brand-text">
-            <strong>邮箱直达</strong>
-            <small>一键打开谷歌邮箱</small>
+            <strong>通讯面板</strong>
+            <small>邮箱网盘一站式管理</small>
           </div>
         </a>
 
@@ -163,32 +163,28 @@
          包含：动态标题、搜索框、搜索按钮、搜索引擎按钮
          ==================================================== -->
     <section class="hero">
-
-      <!-- 动态标题 -->
-      <h1 class="hero-title">
-        <span class="title-dynamic-wrap" aria-live="polite">
-          <span id="hero-rotating-text" class="hero-rotating-text">小D的门面 ✦</span>
-        </span>
-      </h1>
-
-      <!-- 顶部预留 tabs 区（目前是空的，先保留，避免影响布局） -->
-      <nav class="hero-tabs"></nav>
-
-      <!-- 搜索框 -->
-      <div class="search-wrap">
-        <input
-          id="search-input"
-          class="search-input"
-          placeholder="嗨~今天有什么想问的？"
-        />
-        <button id="search-btn" class="search-btn" aria-label="搜索">
-          点一下就知道~
-        </button>
+      <div class="hero-shell">
+        <h1 class="hero-title">
+          <span class="title-dynamic-wrap" aria-live="polite">
+            <span id="hero-rotating-text" class="hero-rotating-text">小D的门面 ✦</span>
+          </span>
+        </h1>
+    
+        <nav class="hero-tabs"></nav>
+    
+        <div class="search-wrap">
+          <input
+            id="search-input"
+            class="search-input"
+            placeholder="嗨~今天有什么想问的？"
+          />
+          <button id="search-btn" class="search-btn" aria-label="搜索">
+            点一下就知道~
+          </button>
+        </div>
+    
+        <div id="engine-pills" class="engine-pills"></div>
       </div>
-
-      <!-- 搜索引擎切换按钮容器：
-           会由 main.js 动态插入“站内 / 百度 / Google / 淘宝 / Bing” -->
-      <div id="engine-pills" class="engine-pills"></div>
     </section>
 
 

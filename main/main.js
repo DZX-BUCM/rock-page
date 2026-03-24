@@ -351,7 +351,7 @@ const ENGINES = [
    ========================================================= */
 const HERO_ROTATING_LINES = [
   "小Dの门面 ✦",
-  "走南闯北的一些经验哦 ૮ ˶ᵔ ᵕ ᵔ˶ ა",
+  "走南闯北的一些经验哦 ૮&nbsp;˶ᵔ&nbsp;ᵕ&nbsp;ᵔ˶&nbsp;ა",
   "可以试着联系站长鸭 ♡",
   "call me hero of computer 嘿嘿 ᕦ(ò_óˇ)ᕤ"
 ];
@@ -755,19 +755,18 @@ function initHeroTitleRotate() {
   if (!el) return;
 
   let current = 0;
-  el.textContent = HERO_ROTATING_LINES[current];
+  el.innerHTML = HERO_ROTATING_LINES[current];
 
   setInterval(() => {
     el.classList.add("is-changing");
 
     setTimeout(() => {
       current = (current + 1) % HERO_ROTATING_LINES.length;
-      el.textContent = HERO_ROTATING_LINES[current];
+      el.innerHTML = HERO_ROTATING_LINES[current];
       el.classList.remove("is-changing");
     }, 420);
   }, 8000);
 }
-
 
 /* =========================================================
    13) 顶部小搜索框

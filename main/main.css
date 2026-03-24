@@ -266,87 +266,155 @@ a.card:hover {
    就是中间大背景 + 大标题 + 搜索框
    ========================================================= */
 
-/* 整个 Hero 大区域 */
+   
+/* =========================
+   Hero 大区域整体设置
+   出问题先看这里：
+   1. 整块太高 / 太矮
+   2. 背景颜色、圆角、内边距不对
+   3. 内容没有整体居中
+   ========================= */
 .hero {
-  position: relative;
-  margin: 16px;
-  min-height: 400px;
-  padding: 80px 16px 28px;
-  border-radius: 10px;
-  overflow: hidden;
-  color: #fff;
+  --hero-w: min(calc(100vw - 32px), 1680px);
+  --hero-content-w: min(100%, 1180px);
 
-  /* 多层渐变背景 */
+  --hero-title-size: clamp(36px, 6vw, 90px); /* 标题字号：屏幕越大字越大，但不会无限变大 */
+  --hero-title-lh: 1.12;                      /* 标题行高：数值越大，标题上下两行离得越开 */
+
+  position: relative; /* 给伪元素和内部定位提供参考 */
+  margin: 16px;       /* 整个 Hero 跟页面边缘的距离 */
+  min-height: clamp(360px, 42vw, 520px); /* Hero 最小高度，跟屏幕宽度联动 */
+  padding: clamp(26px, 3vw, 46px) 12px;   /* 内边距：上下大一点，左右小一点 */
+  border-radius: 10px; /* 四角圆角 */
+  overflow: hidden;    /* 超出的内容裁掉，避免背景或内容溢出 */
+  color: #fff;         /* 默认文字颜色白色 */
+
+  display: grid;
+  place-items: center; /* 让里面主要内容整体居中 */
+
+  /* 背景：前面几层是光晕，最后一层是主渐变底色 */
   background:
     radial-gradient(circle at 18% 20%, rgba(255, 170, 210, 0.22), transparent 26%),
     radial-gradient(circle at 82% 22%, rgba(126, 220, 255, 0.18), transparent 28%),
     radial-gradient(circle at 50% 82%, rgba(186, 160, 255, 0.18), transparent 30%),
     linear-gradient(135deg, #5b3b79 0%, #334a7d 45%, #1d3b53 100%);
-
-  background-size: 400% 400%;  /* 放大背景，便于做流动动画 */
-  animation: gradientMove 14s ease infinite; /* 背景流动 */
+  background-size: 400% 400%;
+  animation: gradientMove 14s ease infinite; /* 背景慢慢流动 */
 }
 
-/* 背景流动动画 */
-@keyframes gradientMove {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 
-/* Hero 上面那层遮罩 */
+/* =========================
+   Hero 上面那层“半透明蒙版”
+   出问题先看这里：
+   1. 背景太亮 / 太花
+   2. 想让背景更柔和
+   ========================= */
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0;                    /* 等于 top/right/bottom/left 全部 0 */
+  inset: 0; /* 等于 top/right/bottom/left 都是 0，铺满整个 hero */
   background: linear-gradient(
     180deg,
     rgba(10, 14, 28, 0.16),
     rgba(10, 14, 28, 0.34)
   );
-  backdrop-filter: blur(2px);
-  z-index: 0;
+  backdrop-filter: blur(2px); /* 背景轻微模糊，更柔和 */
+  z-index: 0; /* 放在内容下面 */
 }
 
-/* 让 Hero 里的内容压在背景和遮罩上面 */
+
+/* =========================
+   Hero 里面所有元素都放到蒙版上面
+   不然内容可能被遮住
+   ========================= */
 .hero * {
   position: relative;
   z-index: 1;
 }
 
-/* 标题整体容器 */
-.hero-title {
+
+/* =========================
+   Hero 内容外壳
+   出问题先看这里：
+   1. 标题、搜索框、按钮整体没居中
+   2. 内容排版方向不对
+   ========================= */
+.hero-shell {
+  width: var(--hero-content-w); /* 内容最大宽度 */
+  margin: 0 auto;
+
   display: flex;
-  flex-direction: column;      /* 标题上下排列 */
-  align-items: center;         /* 水平居中 */
-  gap: 10px;
-  margin: 0 0 28px;
+  flex-direction: column; /* 里面元素上下排 */
+  justify-content: center;
+  align-items: center;    /* 横向居中 */
+
+  text-align: center; /* 文字默认居中 */
+}
+
+
+/* =========================
+   标题外层
+   出问题先看这里：
+   1. 标题和搜索框距离不对
+   2. 标题区域宽度不对
+   ========================= */
+.hero-title {
+  width: 100%;
+  margin: 0 0 clamp(12px, 2.6vw, 28px); /* 标题和搜索框的距离 */
   text-align: center;
 }
 
-/* 标题前缀 */
-.title-prefix {
-  display: block;
-  font-size: clamp(22px, 2.4vw, 36px); /* 自适应字号 */
-  font-weight: 800;
-  letter-spacing: 1px;
-}
 
-/* 给动态标题留高度，避免切换时跳动 */
+/* =========================
+   动态标题的包裹层
+   出问题先看这里：
+   1. 标题切换时，搜索框上下跳
+   2. 标题两行时高度不稳定
+   ========================= */
 .title-dynamic-wrap {
-  display: block;
-  min-height: 1.35em;
-  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  /* 永远按“两行标题”预留高度，标题切换时下面搜索框就不会跳 */
+  min-height: calc(var(--hero-title-size) * var(--hero-title-lh) * 2 + 0.2em);
+
+  padding: 0.06em 0.03em 0.14em; /* 给标题一点呼吸空间 */
+  overflow: visible; /* 阴影或动画超出时也能显示出来 */
 }
 
-/* 会变换的彩色大标题 */
-.hero-rotating-text {
-  display: inline-block;
-  font-size: clamp(34px, 4.4vw, 62px);
-  font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: 1px;
 
+/* =========================
+   真正会显示的动态标题文字
+   出问题先看这里：
+   1. 标题字太大 / 太小
+   2. 标题换行奇怪
+   3. 标题颜色、渐变、阴影不对
+   4. 标题显示两行还是一行
+   ========================= */
+.hero-rotating-text {
+  display: -webkit-box; /* 配合下面的 line-clamp 做最多显示两行 */
+  max-width: 36em;      /* 标题最大宽度，太宽会更难看 */
+  margin: 0 auto;
+
+  white-space: normal;  /* 允许正常换行 */
+  overflow: hidden;     /* 多出来的内容裁掉 */
+  text-align: center;
+
+  text-wrap: pretty;      /* 换行尽量自然一点 */
+  overflow-wrap: normal;  /* 不要乱拆字 */
+  word-break: normal;     /* 正常断行 */
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;  /* 最多两行 */
+
+  font-size: var(--hero-title-size); /* 标题大小统一走变量，方便全局调 */
+  font-weight: 900;                /* 很粗的标题字重 */
+  line-height: var(--hero-title-lh); /* 标题上下行距离 */
+  letter-spacing: 0.01em;            /* 字和字稍微拉开一点 */
+
+  /* 标题渐变色 */
   background: linear-gradient(
     90deg,
     #fff3a6 0%,
@@ -356,86 +424,75 @@ a.card:hover {
     #ffffff 100%
   );
   background-size: 240% auto;
-  -webkit-background-clip: text; /* 文字裁剪渐变 */
+  -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent; /* 文字本身透明，只显示背景渐变 */
   text-shadow: none;
 
+  /* 发光 / 阴影效果 */
   filter:
     drop-shadow(0 2px 2px rgba(0, 0, 0, 0.38))
     drop-shadow(0 8px 20px rgba(0, 0, 0, 0.22));
 
-  animation: heroTextShine 6s linear infinite;
+  animation: heroTextShine 6s linear infinite; /* 标题渐变流动 */
   transition:
     opacity 0.35s ease,
     transform 0.35s ease,
-    filter 0.35s ease;
+    filter 0.35s ease; /* 标题切换时过渡更顺 */
 }
 
-/* 动态标题切换时的过渡状态 */
+
+/* =========================
+   标题切换中的状态
+   出问题先看这里：
+   1. 标题轮播切换没动画
+   2. 切换时太突兀
+   ========================= */
 .hero-rotating-text.is-changing {
-  opacity: 0;
-  transform: translateY(10px) scale(0.98);
+  opacity: 0; /* 切换时先淡出 */
+  transform: translateY(0.16em) scale(0.98); /* 微微下移并缩小一点 */
   filter:
     blur(6px)
     drop-shadow(0 6px 18px rgba(0, 0, 0, 0.20));
 }
 
-/* 标题渐变流动动画 */
-@keyframes heroTextShine {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 240% 50%; }
-}
 
-/* Hero 顶部 Tab 按钮区 */
-.hero-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 22px;
-}
-
-/* 单个 Tab */
-.hero-tabs .tab {
-  border: none;
-  cursor: pointer;
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-weight: 700;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
-  transition: all 0.25s ease;
-}
-
-/* Tab 悬停 */
-.hero-tabs .tab:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-/* 当前选中的 Tab */
-.hero-tabs .tab.active {
-  background: #fff;
-  color: #111827;
-}
-
-/* 搜索框外层 */
+/* =========================
+   搜索框 + 按钮这一整行
+   出问题先看这里：
+   1. 输入框和按钮没对齐
+   2. 按钮太宽 / 太窄
+   3. 两个元素之间距离不对
+   ========================= */
 .search-wrap {
-  max-width: 820px;
-  margin: 0 auto 18px;         /* 居中 */
-  display: flex;
+  width: min(100%, 1100px);
+  margin: 0 auto clamp(14px, 1.4vw, 24px);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(150px, 12vw, 178px);
+  /* 前面输入框自适应占满，后面按钮固定在一个合理范围 */
+  gap: clamp(12px, 1.2vw, 18px); /* 输入框和按钮之间的距离 */
   align-items: center;
+  justify-content: center;
 }
 
-/* 输入框 */
+
+/* =========================
+   输入框本体
+   出问题先看这里：
+   1. 输入框太高 / 太矮
+   2. 字太大 / 太小
+   3. 圆角、阴影、背景不对
+   ========================= */
 .search-input {
-  flex: 1;
-  height: 56px;
-  padding: 0 64px 0 18px;      /* 右边留按钮空间 */
-  border: 4px solid rgba(255, 255, 255, 0.2);
-  border-radius: 14px;
-  outline: none;
-  font-size: 16px;
+  width: 100%;
+  min-width: 0; /* 避免在 grid/flex 布局里撑破 */
+  height: clamp(58px, 5.2vw, 74px);
+  padding: 0 clamp(18px, 1.8vw, 28px); /* 左右留白 */
+  box-sizing: border-box;
+  border: none;
+  border-radius: clamp(18px, 1.8vw, 28px);
+  font-size: clamp(18px, 1.6vw, 26px);
   color: #111;
   background: #fff;
   box-shadow:
@@ -443,86 +500,178 @@ a.card:hover {
     inset 0 0 0 1px rgba(229, 231, 235, 1);
 }
 
-/* 搜索按钮 */
+
+/* =========================
+   搜索按钮
+   出问题先看这里：
+   1. 按钮大小不对
+   2. 文字不居中
+   3. 按钮颜色 / 阴影不对
+   ========================= */
 .search-btn {
-  position: absolute;
-  right: 10px;
-  min-width: 44px;
-  height: 40px;
+  width: 100%;
+  height: clamp(58px, 5.2vw, 74px);
+  padding: 0 1em;
   border: none;
-  border-radius: 12px;
+  border-radius: clamp(18px, 1.8vw, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* 按钮文字不要换行 */
   cursor: pointer;
+  font-size: clamp(16px, 1.3vw, 22px);
   font-weight: 800;
   color: #fff;
   background: #3b82f6;
   box-shadow: 0 6px 18px rgba(59, 130, 246, 0.45);
 }
 
-/* 搜索引擎切换按钮区域 */
+
+/* =========================
+   搜索引擎小标签那一排
+   出问题先看这里：
+   1. 标签没居中
+   2. 标签换行很乱
+   3. 标签之间距离不对
+   ========================= */
 .engine-pills {
+  width: 100%;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap; /* 宽度不够时允许换行 */
+  gap: clamp(8px, 0.8vw, 14px);
 }
 
-/* 单个搜索引擎按钮 */
+
+/* =========================
+   单个搜索引擎标签
+   出问题先看这里：
+   1. 标签大小不对
+   2. 圆角、边框、背景不对
+   ========================= */
 .engine-pill {
   position: relative;
-  padding: 8px 14px;
+  padding:
+    clamp(8px, 0.55vw, 10px)
+    clamp(12px, 1vw, 18px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
+  border-radius: 999px; /* 胶囊形状 */
   color: #fff;
   background: rgba(255, 255, 255, 0.08);
   cursor: pointer;
   font-weight: 700;
+  font-size: clamp(14px, 0.95vw, 18px);
 }
 
-/* 当前选中的搜索引擎 */
+
+/* =========================
+   当前选中的引擎标签
+   出问题先看这里：
+   1. 选中态没变化
+   2. 颜色不明显
+   ========================= */
 .engine-pill.active {
   background: #fff;
   color: #111827;
   border-color: #fff;
 }
 
-/* 当前选中时上面的小三角 */
+
+/* =========================
+   选中标签上方那个小三角
+   出问题先看这里：
+   1. 小三角不显示
+   2. 小三角位置不对
+   ========================= */
 .engine-pill.active::before {
   content: "";
   position: absolute;
-  top: -8px;
+  top: -0.5em;
   left: 50%;
   transform: translateX(-50%);
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid #fff;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.5em solid #fff;
 }
 
-/* 小屏幕下 Hero 缩紧一点 */
-@media (max-width: 640px) {
+
+/* =========================
+   平板尺寸以下
+   大概是中等屏幕时的调整
+   出问题先看这里：
+   1. 平板上标题太大
+   2. 搜索框比例不合适
+   ========================= */
+@media (max-width: 980px) {
   .hero {
-    min-height: 340px;
-    padding-top: 56px;
+    min-height: clamp(360px, 54vw, 500px);
   }
 
   .hero-title {
-    gap: -20px;                        /* 调整标题和描述的距离 */
-    margin-bottom: 22px;
+    margin-bottom: clamp(22px, 3vw, 34px);
   }
 
-  .title-prefix {
-    font-size: 20px;                   /* 调整标题的字体大小，字号 */
-    margin-bottom: 22px;
+  .title-dynamic-wrap {
+    min-height: clamp(84px, 14vw, 170px);
   }
 
-  .hero-rotating-text {
-    font-size: 28px;
+  .hero {
+    --hero-title-size: clamp(36px, 6.8vw, 82px); /* 平板时标题稍微收一点 */
   }
 
-  .search-input {
-    height: 50px;
+  .search-wrap {
+    width: min(100%, 940px);
+    grid-template-columns: minmax(0, 1fr) clamp(140px, 18vw, 170px);
   }
 }
 
+
+/* =========================
+   手机尺寸
+   出问题先看这里：
+   1. 手机上按钮挤到输入框旁边很丑
+   2. 手机上标题太大
+   3. 手机上整体太高 / 太挤
+   ========================= */
+@media (max-width: 760px) {
+  .hero {
+    min-height: auto;   /* 手机上不强行撑高 */
+    padding: 24px 14px;
+  }
+
+  .hero-shell {
+    width: min(100%, 680px);
+  }
+
+  .hero-title {
+    margin-bottom: 22px;
+  }
+
+  .title-dynamic-wrap {
+    min-height: auto; /* 手机上不强行预留太大高度 */
+  }
+
+  .hero {
+    --hero-title-size: clamp(30px, 9vw, 52px); /* 手机上标题更小一点 */
+  }
+
+  .search-wrap {
+    width: 100%;
+    grid-template-columns: 1fr; /* 手机上输入框和按钮改成上下排 */
+    gap: 12px;
+  }
+
+  .search-input,
+  .search-btn {
+    height: 56px;
+  }
+
+  .search-btn {
+    width: min(100%, 220px);
+    justify-self: center; /* 按钮单独居中 */
+  }
+}
 
 /* =========================================================
    6) 分类滚动栏（rock）
@@ -804,46 +953,44 @@ a.card:hover {
    就是最上面 logo + 导航菜单 那一条
    ========================================================= */
 .topic {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  padding: 0;
-  margin-bottom: 0;
+  position: sticky;   /* 顶部栏吸附在页面上方，滚动时不跑掉 */
+  top: 0;             /* 吸附到最顶端 */
+  z-index: 50;        /* 层级高一点，避免被别的内容盖住 */
+  padding: 0;         /* 外围内边距为 0 */
+  margin-bottom: 0;   /* 底部外边距为 0 */
 }
 
 /* 顶部整条导航栏 */
 .topic .bar {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+  display: flex;              /* 用横向排列 */
+  justify-content: center;    /* 整体内容水平居中 */
+  align-items: center;        /* 垂直居中 */
+  gap: 48px;                  /* bar 里面各大块之间的基础间距，也就是调顶部的这些子的间距用这个 */
 
-  height: 64px;
-  padding: 0 20px;
+  height: 64px;               /* 顶部栏高度 */
+  padding: 0 20px;            /* 左右留一点空白 */
 
-  background: var(--topic-bg);
-  border: 0;
-  border-radius: var(--topic-bar-radius);
-  box-shadow: none;
+  background: var(--topic-bg);/* 背景色 */
+  border: 0;                  /* 无边框 */
+  border-radius: var(--topic-bar-radius); /* 圆角 */
+  box-shadow: none;           /* 不要阴影 */
 }
 
-/* 品牌区 */
+/* 左边品牌区，比如 logo + 文字这个就是那个带左边logo的 */
 .topic .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: inherit;
-  text-decoration: none;
+  display: flex;              /* 横向排列 */
+  align-items: center;        /* 垂直居中 */
+  gap: 12px;                  /* logo 和文字之间的距离 */
+  color: inherit;             /* 继承文字颜色 */
+  text-decoration: none;      /* 去掉下划线 */
 }
-
-/* 品牌 logo */
 .topic .brand img {
-  width: 40px;
-  height: 40px;
+  width: 40px;                /* logo 宽度 */
+  height: 40px;               /* logo 高度 */
   display: block;
-  border-radius: 10px;
-  margin-right: 12px;
+  border-radius: 10px;        /* 圆角 */
+  margin-right: 12px;         /* logo 和右边文字拉开一点，这是顶部栏的logo和右边文字的距离 */
 }
 
 /* 品牌主文字 */
@@ -860,14 +1007,6 @@ a.card:hover {
   color: var(--topic-muted);
 }
 
-/* 顶部导航菜单区 */
-.topic .nav {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  margin-left: 60px;
-}
 
 /* 顶部提示条（如果 data-note 有值才显示） */
 .topic .nav::after {
@@ -884,17 +1023,17 @@ a.card:hover {
   background: var(--topic-primary);
 }
 
-/* 顶部导航项 */
+/* 顶部每一个导航按钮 */
 .topic .nav-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 8px;
+  display: inline-flex;       /* 按钮里的文字和小图标横向排列 */
+  align-items: center;        /* 垂直居中 */
+  gap: 6px;                   /* 按钮内部：文字和小箭头之间的距离 */
+  padding: 6px 12px;          /* 按钮内部留白 */
+  border-radius: 8px;         /* 圆角 */
   color: #374151;
-  text-decoration: none;
+  text-decoration: none;      /* 去掉链接下划线 */
   font-weight: 700;
-  background: transparent;
+  background: transparent;    /* 默认透明背景 */
 }
 
 /* 当前选中的导航项 */
@@ -932,6 +1071,7 @@ a.card:hover {
   background: var(--topic-badge-sand-bg);
   color: var(--topic-badge-sand-text);
 }
+
 
 /* ===== 分类滚动框：固定样式，只整体缩放 ===== */
 

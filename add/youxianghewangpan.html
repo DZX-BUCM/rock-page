@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mail & Cloud Hub</title>
+  <link rel="stylesheet" href="youxianghewangpan.css" />
+</head>
+<body>
+  <div class="page-bg">
+    <span class="blur blur-1"></span>
+    <span class="blur blur-2"></span>
+    <span class="grid-mask"></span>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div class="brand-text">
+        <h1>Mail & Cloud Hub</h1>
+        <p>邮箱与网盘统一入口</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button class="ghost-btn" id="themeToggle">切换主题</button>
+      <a class="solid-btn" href="#mailSection">开始浏览</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-main">
+        <span class="section-pill">ALL IN ONE ✨</span>
+  
+        <h2>
+          一个页面，<br>
+          收纳你的网盘和邮箱 ✉️☁️
+        </h2>
+  
+        <p class="hero-desc">
+          常用入口都放这儿啦。找邮箱不绕路，找网盘不藏猫猫，点一下就到，很省心～
+        </p>
+  
+        <div class="hero-actions">
+          <a class="solid-btn large" href="#mailSection">去收邮件 💌</a>
+          <a class="ghost-btn large" href="#cloudSection">去存文件 📁</a>
+        </div>
+      </div>
+
+
+      <aside class="hero-side">
+        <div class="overview-card">
+          <div class="overview-top">
+            <span class="section-pill small">概览面板</span>
+            <span class="status-dot"></span>
+          </div>
+
+          <h3>现在这块是干嘛的？</h3>
+          <p class="overview-desc">
+            这块不再做“看起来高级但用途不清楚”的展示卡，而是专门用来做总览、统计和快速跳转。
+          </p>
+
+          <div class="overview-stats">
+            <div class="mini-stat">
+              <span>总服务数</span>
+              <strong id="totalCount">0</strong>
+            </div>
+            <div class="mini-stat">
+              <span>邮箱服务</span>
+              <strong id="mailCount">0</strong>
+            </div>
+            <div class="mini-stat">
+              <span>网盘服务</span>
+              <strong id="cloudCount">0</strong>
+            </div>
+          </div>
+
+          <div class="overview-tools">
+            <div class="overview-block">
+              <span class="item-label">快捷筛选</span>
+              <div class="quick-filter-list">
+                <button type="button" class="quick-chip" data-filter="中国">中国服务</button>
+                <button type="button" class="quick-chip" data-filter="Global">国际服务</button>
+                <button type="button" class="quick-chip" data-filter="隐私">隐私安全</button>
+                <button type="button" class="quick-chip" data-filter="企业">企业办公</button>
+                <button type="button" class="quick-chip" data-filter="Apple">Apple 生态</button>
+                <button type="button" class="quick-chip" data-filter="">清空筛选</button>
+              </div>
+            </div>
+          
+            <div class="overview-block">
+              <span class="item-label">快速操作</span>
+              <div class="quick-link-list">
+                <button type="button" class="quick-action" data-action="focus-search">定位搜索框</button>
+                <a class="quick-action" href="#mailSection">打开邮箱区</a>
+                <a class="quick-action" href="#cloudSection">打开网盘区</a>
+              </div>
+            </div>
+          
+            <div class="overview-block">
+              <span class="item-label">当前视图</span>
+              <div class="live-summary">
+                <div class="live-row">
+                  <span>搜索关键词</span>
+                  <strong id="currentKeyword">全部</strong>
+                </div>
+                <div class="live-row">
+                  <span>当前邮箱结果</span>
+                  <strong id="panelMailVisible">0</strong>
+                </div>
+                <div class="live-row">
+                  <span>当前网盘结果</span>
+                  <strong id="panelCloudVisible">0</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="search-panel">
+      <div class="search-left">
+        <span class="section-pill">SEARCH</span>
+        <h3>统一搜索</h3>
+        <p>支持按名称、描述、标签、地区进行搜索，邮箱和网盘会一起联动筛选。</p>
+      </div>
+
+      <div class="search-right">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="搜索服务名称、标签或地区，例如：Gmail / 百度 / cloud / 中国"
+        />
+      </div>
+    </section>
+
+    <section class="service-section" id="mailSection">
+      <div class="section-head">
+        <div>
+          <span class="section-pill">MAIL</span>
+          <h3>邮箱服务</h3>
+          <p>所有邮箱集中展示，更适合快速对比和统一管理。</p>
+        </div>
+        <div class="section-count">
+          当前显示 <strong id="mailVisible">0</strong>
+        </div>
+      </div>
+
+      <div class="service-grid" id="mailGrid"></div>
+    </section>
+
+    <section class="service-section" id="cloudSection">
+      <div class="section-head">
+        <div>
+          <span class="section-pill">CLOUD</span>
+          <h3>网盘服务</h3>
+          <p>所有网盘集中展示，避免和邮箱混在一起显得杂乱。</p>
+        </div>
+        <div class="section-count">
+          当前显示 <strong id="cloudVisible">0</strong>
+        </div>
+      </div>
+
+      <div class="service-grid" id="cloudGrid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-tags">
+      <span>更宽屏布局</span>
+      <span>邮箱 / 网盘分区</span>
+      <span>统一搜索</span>
+      <span>高级简洁风格</span>
+    </div>
+    <p>Mail & Cloud Hub · Clean / Elegant / Structured</p>
+  </footer>
+
+  <script src="youxianghewangpan.js"></script>
+</body>
+</html>
