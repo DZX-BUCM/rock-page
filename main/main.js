@@ -8,7 +8,7 @@
 // 2. 写完整网络地址
 // 3. 不写 logo，就会自动尝试：本地图标 -> Google favicon -> 首字母
 const SITES = [
-  // ========================= 电脑问题 =========================
+  // ========================= 技术积累 =========================
   {
     name: "office",
     url: "https://blog.csdn.net/huazn612/article/details/109289960",
@@ -33,6 +33,61 @@ const SITES = [
     desc: "word运行报错问题",
     logo: "favicon/office.png"
   },
+  {
+    name: "office",
+    url: "https://www.a8u.net/k/ru-he-yong-word-gei-lun-wen-jia-ye-ma.html",
+    desc: "word中怎么在指定位置开始统计页码问题",
+    logo: "favicon/office.png"
+  },
+  {
+    name: "windows问题",
+    url: "https://www.win10d.com/jiaocheng/31079.html",
+    desc: "文件夹底色变黑的处理办法",
+    logo: "https://cdn-icons-png.flaticon.com/512/732/732221.png"
+  },
+  {
+    name: "网站搭建",
+    url: "https://www.bilibili.com/video/BV1ts4y1f7Gu/?spm_id_from=333.337.search-card.all.click&vd_source=151ea1245ea510a36b1ff687d1ce2b87",
+    desc: "构建个人网站的总体教程",
+    logo: "favicon/tu2.png"
+  },
+  {
+    name: "HEXO部署",
+    url: "https://www.codeprj.com/blog/6a45771.html",
+    desc: "个人网站技术栈",
+    logo: "favicon/tu2.png"
+  },
+  {
+    name: "npm install报错",
+    url: "https://blog.csdn.net/qq_63358859/article/details/134920380",
+    desc: "个人网站技术栈",
+    logo: "favicon/tu2.png"
+  },
+  {
+    name: "解决npm警告",
+    url: "https://blog.csdn.net/tombosky/article/details/135819263",
+    desc: "个人网站技术栈",
+    logo: "favicon/tu2.png"
+  },
+  {
+    name: "在线markdown编辑器",
+    url: "https://markdown.com.cn/editor/",
+    desc: "个人网站技术栈",
+    logo: "favicon/tu2.png"
+  },
+  {
+    name: "ppt-canvas-size",
+    url: "https://blog.csdn.net/weixin_41529093/article/details/120921401",
+    desc: "ppt怎么调整画布大小",
+    logo: "favicon/office.png"
+  },
+  {
+    name: "ffmpeg-install",
+    url: "https://blog.csdn.net/2602_94958286/article/details/159333768",
+    desc: "FFmpeg安装教程",
+    logo: "favicon/safe.png"
+  },
+
 
   // ========================= 学习资料 =========================
   {
@@ -53,6 +108,19 @@ const SITES = [
     desc: "listening",
     logo: "favicon/qiyiguo.png"
   },
+  {
+    name: "TED音频03",
+    url: "https://www.ted.com/talks/wendy_macnaughton_the_art_of_paying_attention",
+    desc: "listening",
+    logo: "favicon/qiyiguo.png"
+  },
+  {
+    name: "TED音频02",
+    url: "https://www.ted.com/talks/vittorio_loreto_need_a_new_idea_start_at_the_edge_of_what_is_known",
+    desc: "listening",
+    logo: "favicon/qiyiguo.png"
+  },
+
 
 
   // ========================= 下载专区 =========================
@@ -90,7 +158,7 @@ const SITES = [
     name: "24bit无损下载",
     url: "https://www.24bit.net/",
     desc: "下载母带级别的音乐，但是要收费哦",
-    logo: "favicon/mogu.png"
+    logo: "favicon/music.png"
   },
   {
     name: "阿里矢量图标库",
@@ -146,12 +214,7 @@ const SITES = [
   },
 
   // ========================= 实用工具 =========================
-  {
-    name: "Bigjpg",
-    url: "https://bigjpg.com/zh",
-    desc: "图片清晰化工具",
-    logo: "favicon/tu7.png"
-  },
+
   {
     name: "labelme",
     url: "https://blog.csdn.net/cenbug/article/details/124944291",
@@ -169,12 +232,6 @@ const SITES = [
     url: "https://medcite.cn/search/nature%20biomedical%20engineering?content=2&iFactor=0,7&threshold=0.8",
     desc: "文献检索工具",
     logo: "favicon/TU12.png"
-  },
-  {
-    name: "SM.MS",
-    url: "https://sm.ms/",
-    desc: "免费稳定的图床工具",
-    logo: "favicon/tu13.png"
   },
   {
     name: "freecompress",
@@ -218,6 +275,12 @@ const SITES = [
     desc: "deepseek API充值工具",
     logo: "favicon/shizi.png"
   },
+  {
+    name: "fetchv",
+    url: "https://microsoftedge.microsoft.com/addons/detail/fetchv-m3u8hls%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%99%A8/dbepbhhcmhodojepbagfppgpieeplpik",
+    desc: "M3U8/HLS网页视频下载工具",
+    logo: "favicon/bangbangtang.png"
+  },
 
   // ========================= 国学典籍 =========================
   {
@@ -244,44 +307,38 @@ const SITES = [
     desc: "黄帝内经灵枢（注音版）",
     logo: "favicon/guwenzhijia.png"
   },
-
-  // ========================= 技术专区 =========================
   {
-    name: "网站搭建",
-    url: "https://www.bilibili.com/video/BV1ts4y1f7Gu/?spm_id_from=333.337.search-card.all.click&vd_source=151ea1245ea510a36b1ff687d1ce2b87",
-    desc: "构建个人网站的总体教程",
-    logo: "favicon/tu2.png"
-  },
-  {
-    name: "HEXO部署",
-    url: "https://www.codeprj.com/blog/6a45771.html",
-    desc: "个人网站技术栈",
-    logo: "favicon/tu2.png"
-  },
-  {
-    name: "npm install报错",
-    url: "https://blog.csdn.net/qq_63358859/article/details/134920380",
-    desc: "个人网站技术栈",
-    logo: "favicon/tu2.png"
-  },
-  {
-    name: "解决npm警告",
-    url: "https://blog.csdn.net/tombosky/article/details/135819263",
-    desc: "个人网站技术栈",
-    logo: "favicon/tu2.png"
-  },
-  {
-    name: "在线markdown编辑器",
-    url: "https://markdown.com.cn/editor/",
-    desc: "个人网站技术栈",
-    logo: "favicon/tu2.png"
+    name: "ximalaya",
+    url: "https://www.ximalaya.com/",
+    desc: "🎧 喜马拉雅",
+    logo: "favicon/ximalaya-cute.png"
   },
 
   // ========================= 软件破解 =========================
+  
+  {
+    name: "visio",
+    url: "https://zhuanlan.zhihu.com/p/1896564817998877030",
+    desc: "安装visio及激活教程",
+    logo: "favicon/safe.png"
+  },
+  {
+    name: "diskgenius",
+    url: "https://www.70soft.com/soft/814880.html",
+    desc: "💿 DiskGenius完美破解版",
+    logo: "favicon/safe.png"
+  },
+  {
+    name: "aida64",
+    url: "https://www.downkuai.com/soft/182841.html",
+    desc: "🧸 AIDA64破解版",
+    logo: "favicon/safe.png"
+  },
   {
     name: "Xmind破解",
     url: "https://www.cnblogs.com/wushiyiwuzhong/p/17803638.html",
-    desc: "软件破解"
+    desc: "软件破解",
+    logo: "favicon/safe.png"
   }
 ];
 
@@ -292,13 +349,12 @@ const SITES = [
    ========================================================= */
 const ROCK_ITEMS = [
   { cat: "crack",        iconImg: "favicon/pojie.png", title: "破解教程", desc: "常用破解经验" },
-  { cat: "research",     iconImg: "favicon/xuexiziliao.png", title: "学习资料", desc: "论文与软件教程" },
-  { cat: "troubleshoot", iconImg: "favicon/diannaowenti.png", title: "电脑问题", desc: "常见软硬件问题处理" },
-  { cat: "download",     icon: "⬇️", title: "下载专区", desc: "常用下载与资源入口" },
-  { cat: "classics",     iconImg: "favicon/guoxue.png", title: "国学典籍", desc: "数字典籍资源整理" },
-  { cat: "tools",        icon: "🧰", title: "实用工具", desc: "日常高频工具合集" },
+  { cat: "research",     iconImg: "favicon/documentory.png", title: "学习资料", desc: "论文与软件教程" },
+  { cat: "download",     iconImg: "favicon/clound.png", title: "下载专区", desc: "常用下载与资源入口" },
+  { cat: "classics",     iconImg: "favicon/classic.png", title: "国学典籍", desc: "数字典籍资源整理" },
+  { cat: "tools",        iconImg: "favicon/toolbox.png", title: "实用工具", desc: "日常高频工具合集" },
   { cat: "KG",           iconImg: "favicon/tupu.png", title: "知识图谱", desc: "我的主要研究方向" },
-  { cat: "techology",    iconImg: "favicon/jishu.png", title: "技术积累", desc: "网站搭建与前端记录" }
+  { cat: "techology",    iconImg: "favicon/jishu.png", title: "技术积累", desc: "电脑日常操作涉及的技术问题" }
 ];
 
 /* =========================================================
@@ -524,14 +580,13 @@ function filter(keyword) {
 // 每个分类对应的“关键词命中规则”
 // 优先 cats，再看 tags，最后用 name + desc 兜底匹配
 const CATEGORY_MAP = {
-  crack: ["破解"],
-  research: ["学术", "论文", "TED", "安装", "教程"],
-  troubleshoot: ["问题"],
+  crack: ["破解","visio"],
+  research: ["学术", "论文", "TED"],
   download: ["网盘", "下载", "云盘"],
   classics: ["小说", "喜马拉雅", "典籍", "红楼梦", "黄帝内经"],
-  tools: ["工具", "Aizex"],
+  tools: ["工具", "Aizex",],
   KG: ["Neo4j"],
-  techology: ["技术"]
+  techology: ["技术","问题", "安装", "教程","ppt"]
 };
 
 // 提供给外部用，保持你原来的调用方式不变
