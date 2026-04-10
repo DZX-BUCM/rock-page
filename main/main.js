@@ -81,12 +81,14 @@ const SITES = [
     desc: "ppt怎么调整画布大小",
     logo: "favicon/office.png"
   },
+
   {
-    name: "ffmpeg-install",
-    url: "https://blog.csdn.net/2602_94958286/article/details/159333768",
-    desc: "FFmpeg安装教程",
-    logo: "favicon/safe.png"
+    name: "sms-rental",
+    url: "https://sms-verification-number.com/en/home/",
+    desc: "📲 SMS电话租赁",
+    logo: "favicon/jichang.png"
   },
+
 
 
   // ========================= 学习资料 =========================
@@ -166,7 +168,24 @@ const SITES = [
     desc: "下载所需的图标",
     logo: "favicon/lianwu.png"
   },
-
+  {
+    name: "moji-diary",
+    url: "https://www.moji01.com/",
+    desc: "🖋️ 墨记日记",
+    logo: "favicon/jichang.png"
+  },
+  {
+    name: "ffmpeg-install",
+    url: "https://blog.csdn.net/2602_94958286/article/details/159333768",
+    desc: "FFmpeg下载安装教程",
+    logo: "favicon/bangbangtang.png"
+  },
+  {
+    name: "fetchv",
+    url: "https://microsoftedge.microsoft.com/addons/detail/fetchv-m3u8hls%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%99%A8/dbepbhhcmhodojepbagfppgpieeplpik",
+    desc: "M3U8/HLS网页视频下载工具",
+    logo: "favicon/bangbangtang.png"
+  },
 
 
   // ========================= 知识图谱 =========================
@@ -275,12 +294,7 @@ const SITES = [
     desc: "deepseek API充值工具",
     logo: "favicon/shizi.png"
   },
-  {
-    name: "fetchv",
-    url: "https://microsoftedge.microsoft.com/addons/detail/fetchv-m3u8hls%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%99%A8/dbepbhhcmhodojepbagfppgpieeplpik",
-    desc: "M3U8/HLS网页视频下载工具",
-    logo: "favicon/bangbangtang.png"
-  },
+
 
   // ========================= 国学典籍 =========================
   {
@@ -311,7 +325,7 @@ const SITES = [
     name: "ximalaya",
     url: "https://www.ximalaya.com/",
     desc: "🎧 喜马拉雅",
-    logo: "favicon/ximalaya-cute.png"
+    logo: "favicon/jichang.png"
   },
 
   // ========================= 软件破解 =========================
@@ -581,12 +595,12 @@ function filter(keyword) {
 // 优先 cats，再看 tags，最后用 name + desc 兜底匹配
 const CATEGORY_MAP = {
   crack: ["破解","visio"],
-  research: ["学术", "论文", "TED"],
-  download: ["网盘", "下载", "云盘"],
+  research: ["学术", "论文", "文献", "TED"],
+  download: ["网盘", "下载", "安装", "云盘"],
   classics: ["小说", "喜马拉雅", "典籍", "红楼梦", "黄帝内经"],
   tools: ["工具", "Aizex",],
   KG: ["Neo4j"],
-  techology: ["技术","问题", "安装", "教程","ppt"]
+  techology: ["技术","问题", "SMS", "教程","ppt"]
 };
 
 // 提供给外部用，保持你原来的调用方式不变
