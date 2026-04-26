@@ -88,7 +88,12 @@ const SITES = [
     desc: "📲 SMS电话租赁",
     logo: "favicon/jichang.png"
   },
-
+  {
+    name: "huggingface注册不了418问题",
+    url: "https://blog.csdn.net/yqmyqqys1/article/details/149528456",
+    desc: "huggingface",
+    logo: "✨"
+  },
 
 
   // ========================= 学习资料 =========================
@@ -122,10 +127,21 @@ const SITES = [
     desc: "listening",
     logo: "favicon/qiyiguo.png"
   },
-
+  {
+    name: "TED音频04",
+    url: "https://www.youtube.com/watch?v=Zz9aXCfTdhw",
+    desc: "listening",
+    logo: "favicon/qiyiguo.png"
+  },
 
 
   // ========================= 下载专区 =========================
+  {
+    name: "字体下载",
+    url: "https://www.fonts.net.cn/fonts-zh/tag-naibuerzz-1.html",
+    desc: "fonts",
+    logo: "🧁"
+  },
   {
     name: "Europe PMC",
     url: "https://europepmc.org/article/MED/34725513",
