@@ -1,0 +1,266 @@
+/* =========================================================
+   001：顶部导航区 + 全局基础变量/规则
+   来源：原 main.css，按分区拆分
+   ========================================================= */
+
+:root {
+  /* 页面基础颜色 */
+    --bg: #f6f7fb;               /* 页面背景色 */
+    --card: #fff;                /* 白色卡片背景 */
+    --text: #111827;             /* 主文字颜色 */
+    --muted: #6b7280;            /* 次要文字颜色 */
+    --line: #e5e7eb;             /* 边框线颜色 */
+    --primary: #2563eb;          /* 主蓝色 */
+
+    /* 分类滚动栏（rock） */
+    --rock-per-view: 5;          /* 一屏默认显示几个分类卡片 */
+    --rock-gap: 16px;            /* 分类卡片之间的间距 */
+    --rock-item-h: 100px;        /* 分类卡片的最小高度 */
+    --rock-edge-fade: #ffffff;   /* 分类滚动区两侧渐隐的颜色 */
+
+    /* 顶部导航（topic） */
+    --topic-primary: #ffffff;
+    --topic-bg: #ffffff;
+    --topic-text: #111827;
+    --topic-muted: #6b7280;
+    --topic-border: #e5e7eb;
+    --topic-badge-red: #ef4444;
+    --topic-badge-sand-bg: #fde68a;
+    --topic-badge-sand-text: #92400e;
+
+    /* 顶部导航的补充参数 */
+    --topic-pad-x: 0;
+    --topic-bar-radius: 0;
+    --topic-border-x: 0;
+  
+    /* rock 卡片里滚动栏标题、描述和图标的独立位置控制 */
+    --rock-icon-x: 13px;   /* 图标左右 */
+    --rock-icon-y: 13px;   /* 图标上下 */
+
+    --rock-title-x: 50px;   /* 标题左右 */
+    --rock-title-y: -10px; /* 标题上下 */
+
+    --rock-desc-left: 130px; /* 描述基础左边距 */
+    --rock-desc-x: 20px;      /* 描述左右微调 */
+    --rock-desc-y: -30px;    /* 描述上下微调 */
+
+    --rock-enter-x: -20px;         /* 圆圈箭头左右微调 */
+    --rock-enter-y: 0px;        /* 圆圈箭头上下微调 */
+
+    /* ===== 烟灰琥珀主题变量（更接近你第二张图） ===== */
+    --rock-head-gap: 18px;
+    --rock-panel: #2a2e35;
+    --rock-panel-2: #1d2128;
+    --rock-panel-soft: #323840;
+  
+    --rock-gold: #d5b56f;
+    --rock-gold-soft: rgba(213, 181, 111, 0.10);
+    --rock-gold-line: rgba(213, 181, 111, 0.18);
+  
+    --rock-title-color: #f5efe3;
+    --rock-desc-color: #c6baaa;
+    --rock-enter-color: #d1b273;
+  
+    --rock-shadow: 0 12px 26px rgba(18, 22, 30, 0.14);
+}
+
+* {
+  box-sizing: border-box;      /* 让宽高计算更稳定 */
+}
+
+html,
+body {
+  margin: 0;                   /* 去掉浏览器默认外边距 */
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; /* 字体 */
+    color: var(--text);          /* 默认文字颜色 */
+    background: var(--bg);       /* 页面背景色 */
+}
+
+.topbar {
+  position: sticky;            /* 滚动时吸顶 */
+    top: 0;
+    display: flex;               /* 横向排列 */
+    gap: 12px;                   /* 子元素间距 */
+    align-items: center;         /* 垂直居中 */
+    padding: 12px 16px;          /* 内边距 */
+    background: rgba(255, 255, 255, 0.85); /* 半透明白底 */
+    backdrop-filter: blur(8px);  /* 背景模糊 */
+    border-bottom: 1px solid var(--line);  /* 底部细线 */
+}
+
+.brand {
+  font-weight: 800;            /* 品牌名加粗 */
+}
+
+.input {
+  flex: 1;                     /* 占满剩余空间 */
+    min-width: 240px;            /* 最小宽度 */
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+.topic {
+  position: sticky;   /* 顶部栏吸附在页面上方，滚动时不跑掉 */
+    top: 0;             /* 吸附到最顶端 */
+    z-index: 50;        /* 层级高一点，避免被别的内容盖住 */
+    padding: 0;         /* 外围内边距为 0 */
+    margin-bottom: 0;   /* 底部外边距为 0 */
+}
+
+.topic .bar {
+  position: relative;
+    display: flex;              /* 用横向排列 */
+    justify-content: center;    /* 整体内容水平居中 */
+    align-items: center;        /* 垂直居中 */
+    gap: 48px;                  /* bar 里面各大块之间的基础间距，也就是调顶部的这些子的间距用这个 */
+
+    height: 64px;               /* 顶部栏高度 */
+    padding: 0 20px;            /* 左右留一点空白 */
+
+    background: var(--topic-bg);/* 背景色 */
+    border: 0;                  /* 无边框 */
+    border-radius: var(--topic-bar-radius); /* 圆角 */
+    box-shadow: none;           /* 不要阴影 */
+}
+
+.topic .brand {
+  display: flex;              /* 横向排列 */
+    align-items: center;        /* 垂直居中 */
+    gap: 12px;                  /* logo 和文字之间的距离 */
+    color: inherit;             /* 继承文字颜色 */
+    text-decoration: none;      /* 去掉下划线 */
+}
+
+.topic .brand img {
+  width: 40px;                /* logo 宽度 */
+    height: 40px;               /* logo 高度 */
+    display: block;
+    border-radius: 10px;        /* 圆角 */
+    margin-right: 12px;         /* logo 和右边文字拉开一点，这是顶部栏的logo和右边文字的距离 */
+}
+
+.topic .brand-text strong {
+  display: block;
+    line-height: 1;
+    color: var(--topic-text);
+}
+
+.topic .brand-text small {
+  display: block;
+    font-size: 12px;
+    color: var(--topic-muted);
+}
+
+.topic .nav::after {
+  content: attr(data-note);
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--topic-primary);
+}
+
+.topic .nav-item {
+  display: inline-flex;       /* 按钮里的文字和小图标横向排列 */
+    align-items: center;        /* 垂直居中 */
+    gap: 6px;                   /* 按钮内部：文字和小箭头之间的距离 */
+    padding: 6px 12px;          /* 按钮内部留白 */
+    border-radius: 8px;         /* 圆角 */
+    color: #374151;
+    text-decoration: none;      /* 去掉链接下划线 */
+    font-weight: 700;
+    background: transparent;    /* 默认透明背景 */
+}
+
+.topic .nav-item.active {
+  background: #f3f4f6;
+}
+
+.topic .nav-item .chev {
+  width: 8px;
+    height: 8px;
+    margin-left: 2px;
+    display: inline-block;
+    transform: rotate(-45deg);
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+}
+
+.topic .badge {
+  padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.topic .badge-red {
+  background: var(--topic-badge-red);
+    color: #fff;
+}
+
+.topic .badge-sand {
+  background: var(--topic-badge-sand-bg);
+    color: var(--topic-badge-sand-text);
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background: #fbf8f4;
+}
+
+.topic .bar {
+  height: 72px;
+    justify-content: flex-start;
+    gap: clamp(28px, 3.6vw, 64px);
+    padding: 0 38px;
+    border-bottom: 1px solid #eee8e0;
+    background: rgba(255, 253, 250, 0.96);
+}
+
+.topic .brand {
+  flex: 0 0 auto;
+    margin-right: 18px;
+}
+
+.topic .brand img {
+  width: 42px;
+    height: 42px;
+    margin-right: 0;
+}
+
+.topic .nav-item {
+  padding: 9px 14px;
+    border-radius: 12px;
+    color: #17263a;
+}
+
+.topic .nav-item.active {
+  background: #ffffff;
+    box-shadow: 0 4px 16px rgba(76, 55, 34, 0.08);
+}
+
+@media (max-width: 900px) {
+  .topic .bar {
+    gap: 12px;
+        padding: 0 16px;
+        overflow-x: auto;
+  }
+}
+
+html,
+body {
+  height: 100%;
+    overflow: hidden;
+}

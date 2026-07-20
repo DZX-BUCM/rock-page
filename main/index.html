@@ -9,11 +9,15 @@
   <!-- 网站图标 -->
   <link rel="icon" href="favicon/shizi.png" />
 
-  <!-- 样式文件：
-       main.css   = 页面主体样式
-       sidebar.css = 左侧侧边栏样式 -->
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="sidebar.css" />
+  <!-- 四个分区样式（全部使用相对路径）
+       001 = 顶部导航区
+       002 = 左侧边栏与整体布局（为保持原有层叠结果，最后加载）
+       003 = 主工作台 / 搜索区
+       004 = 快速导航 / 卡片区 -->
+  <link rel="stylesheet" href="001/001.css" />
+  <link rel="stylesheet" href="003/003.css" />
+  <link rel="stylesheet" href="004/004.css" />
+  <link rel="stylesheet" href="002/002.css" />
 </head>
 
 <body>
@@ -22,14 +26,14 @@
        1) 左侧侧边栏开关按钮
        点击后配合 sidebar.js 实现展开 / 收起
        ====================================================== -->
-  <button class="sidebar-toggle">☰</button>
+  <button class="sidebar-toggle" data-zone="002">☰</button>
 
 
   <!-- ======================================================
        2) 左侧侧边栏
        这里放你常用的快捷入口
        ====================================================== -->
-  <div class="sidebar collapsed">
+  <div class="sidebar" data-zone="002">
 
     <!-- GitHub -->
     <a class="side-item" href="https://github.com" target="_blank">
@@ -132,13 +136,13 @@
        你原来的 header / hero / 分类栏 / 卡片区 都放这里
        collapsed 类一般是配合侧边栏一起联动的
        ====================================================== -->
-  <div class="main-wrapper collapsed">
+  <div class="main-wrapper">
 
     <!-- ====================================================
          3.1 顶部题头
          左边是邮箱直达，右边是几个快捷导航
          ==================================================== -->
-    <header class="topic" role="banner">
+    <header class="topic" role="banner" data-zone="001">
       <div class="bar" id="topic-bar">
 
         <!-- 品牌入口 / 邮箱直达 -->
@@ -183,16 +187,17 @@
          3.2 Hero 搜索区
          包含：动态标题、搜索框、搜索按钮、搜索引擎按钮
          ==================================================== -->
-    <section class="hero">
+    <section class="hero" data-zone="003">
       <div class="hero-shell">
         <h1 class="hero-title">
           <span class="title-dynamic-wrap" aria-live="polite">
-            <span id="hero-rotating-text" class="hero-rotating-text">小D的门面 ✦</span>
+            <span id="hero-rotating-text" class="hero-rotating-text">小D 工作台</span>
           </span>
         </h1>
-    
-        <nav class="hero-tabs"></nav>
-    
+
+        <p class="hero-subtitle">连接知识与工具，探索无限可能</p>
+        <span class="hero-divider" aria-hidden="true"></span>
+
         <div class="search-wrap">
           <input
             id="search-input"
@@ -200,29 +205,23 @@
             placeholder="嗨~今天有什么想问的？"
           />
           <button id="search-btn" class="search-btn" aria-label="搜索">
-            点一下就知道~
+            探索一下 ✦
           </button>
         </div>
-    
+
         <div id="engine-pills" class="engine-pills"></div>
       </div>
     </section>
 
 
     <!-- ====================================================
-         3.3 横向分类栏
-         会由 main.js 动态渲染分类卡片
+         3.3 功能分类区
+         保留原来的七个分类筛选功能，只改成三块式布局
          ==================================================== -->
-    <section class="rock" aria-label="滚动栏目">
-
-      <!-- 可滚动区域 -->
+    <section class="rock" aria-label="功能分类" data-zone="004">
       <div class="rock-viewport" id="rock-viewport">
         <div class="rock-list" id="rock-list"></div>
       </div>
-
-      <!-- 左右翻页按钮 -->
-      <button class="rock-arrow rock-prev" aria-label="上一页">‹</button>
-      <button class="rock-arrow rock-next" aria-label="下一页">›</button>
     </section>
 
 
@@ -230,19 +229,28 @@
          3.4 主卡片列表区
          网站卡片会由 main.js 动态渲染到这里
          ==================================================== -->
-    <main class="grid" id="grid"></main>
+    <section class="cards-scroll-area" data-zone="004">
+      <div class="quick-nav-heading">
+        <h2>快速导航</h2>
+        <span>⚙ 自定义管理</span>
+      </div>
 
+      <main class="grid" id="grid"></main>
+    </section>
   </div>
 
 
   <!-- ======================================================
-       4) 脚本文件
-       main.js    = 主逻辑（卡片、搜索、分类、标题轮播等）
-       sidebar.js = 左侧侧边栏展开 / 收起逻辑
-       注意：这里保持你原来的引用顺序，不乱动
+       四个分区脚本（全部使用相对路径）
+       001 = 顶部导航交互
+       002 = 左侧边栏展开 / 收起
+       003 = 搜索、搜索引擎与标题轮播
+       004 = 网站数据、分类、卡片渲染与统一启动入口
        ====================================================== -->
-  <script src="main.js" defer></script>
-  <script src="sidebar.js"></script>
+  <script src="001/001.js"></script>
+  <script src="002/002.js"></script>
+  <script src="003/003.js"></script>
+  <script src="004/004.js"></script>
 
 </body>
 </html>
