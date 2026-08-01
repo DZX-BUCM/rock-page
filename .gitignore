@@ -1,2 +1,4 @@
 private/
 **/private/
+_github_upload_secret/
+**/_github_upload_secret/

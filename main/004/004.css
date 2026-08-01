@@ -550,7 +550,7 @@ a.card:hover {
     40px;
   grid-template-columns:
     repeat(
-      auto-fit,
+      auto-fill,
       minmax(clamp(150px, 16cqw, 230px), 1fr)
     ) !important;
   align-content: start;
@@ -786,7 +786,7 @@ a.card:hover {
       44px;
     grid-template-columns:
       repeat(
-        auto-fit,
+        auto-fill,
         minmax(clamp(190px, 17cqw, 250px), 1fr)
       ) !important;
     gap: clamp(10px, 1.1cqw, 16px);

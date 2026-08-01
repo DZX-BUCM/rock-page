@@ -146,7 +146,7 @@ function filter(keyword) {
     return SITES;
   }
 
-  return SITES.filter((site) => {
+  function isDirectMatch(site) {
     const name = String(site.name || "").toLowerCase();
     const desc = String(site.desc || "").toLowerCase();
     const url = String(site.url || "").toLowerCase();
@@ -159,6 +159,26 @@ function filter(keyword) {
       tags.some((tag) =>
         String(tag).toLowerCase().includes(q)
       )
+    );
+  }
+
+  const matchedNames = new Set(
+    SITES
+      .filter(isDirectMatch)
+      .map((site) =>
+        String(site.name || "").trim().toLowerCase()
+      )
+      .filter(Boolean)
+  );
+
+  return SITES.filter((site) => {
+    const name = String(site.name || "")
+      .trim()
+      .toLowerCase();
+
+    return (
+      isDirectMatch(site) ||
+      matchedNames.has(name)
     );
   });
 }
