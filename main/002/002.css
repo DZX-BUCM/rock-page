@@ -315,3 +315,93 @@
     --sidebar-width: 220px;
   }
 }
+
+
+/* =========================================================
+   小高度屏幕：整页纵向滚动
+   顶部导航保持固定
+   其余区域随整页滚动
+   小高度时卡片列表自动展开到完整高度
+   ========================================================= */
+
+html {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  height: auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: visible;
+}
+
+.main-wrapper {
+  overflow: visible;
+}
+
+.sidebar {
+  position: absolute;
+  bottom: auto;
+  height: calc(100vh - (88px + var(--sidebar-top-fix)) - 16px);
+  height: calc(100dvh - (88px + var(--sidebar-top-fix)) - 16px);
+}
+
+.sidebar-toggle {
+  position: absolute;
+}
+
+@media (max-height: 820px) {
+  .main-wrapper {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .cards-scroll-area {
+    flex: 0 0 auto;
+    min-height: 0;
+    overflow: visible !important;
+  }
+
+  .cards-scroll-area .grid {
+    flex: 0 0 auto;
+    height: auto;
+    min-height: 0;
+    overflow: visible !important;
+    overscroll-behavior: auto;
+  }
+}
+
+/* =========================================================
+   Hero 稳定布局
+   不再根据浏览器高度拉伸或压缩内部比例
+   分类卡片与搜索区保持稳定距离
+   ========================================================= */
+
+.hero {
+  height: auto !important;
+  min-height: 0 !important;
+  padding:
+    clamp(48px, 4cqw, 72px)
+    clamp(16px, 2cqw, 28px)
+    calc(var(--feature-size) * 0.61 + 28px) !important;
+  align-items: start;
+  justify-items: center;
+}
+
+.hero-shell {
+  justify-content: flex-start;
+}
+
+.title-dynamic-wrap {
+  height: auto !important;
+  min-height: clamp(120px, 9cqw, 154px) !important;
+  max-height: none !important;
+}
+
+.engine-pills {
+  margin-bottom: 20px !important;
+}
