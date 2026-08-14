@@ -341,7 +341,9 @@ const KNOWLEDGE_KEYWORDS = [
   "典籍",
   "红楼梦",
   "黄帝内经",
+  "佛法",
   "Neo4j"
+
 ];
 
 
@@ -359,6 +361,7 @@ const TECHNOLOGY_KEYWORDS = [
   "教程",
   "ppt",
   "破解",
+  "系统封装",
   "visio"
 ];
 
@@ -981,5 +984,27 @@ const SITES = [
     url: "https://www.cnblogs.com/wushiyiwuzhong/p/17803638.html",
     desc: "软件破解",
 
-  }
+  },
+
+  {
+    name: "win_11系统封装技术",
+    url: "https://www.itsk.com/thread/434586",
+    desc: "系统革新",
+
+  },
+
+  {
+    name: "vercel托管域名",
+    url: "https://blog.csdn.net/qq_57376018/article/details/160097635",
+    desc: "域名托管技术",
+
+  },
+
+
+  {
+    name: "文殊菩萨法会",
+    url: "https://www.youtube.com/watch?v=4UYIN7CtEfw",
+    desc: "大乘佛法",
+
+  },
 ];
