@@ -745,7 +745,7 @@ const SITES = [
 
   {
     name: "通用机场下载及使用教程",
-    url: "https://wangpan.yfjc.my/",
+    url: "https://xiazai.yfjc.win/1",
     desc: "可以使用任何你想要的机场",
 
   },
