@@ -405,3 +405,143 @@ body {
 .engine-pills {
   margin-bottom: 20px !important;
 }
+
+/* =========================================================
+   四区统一布局（最终规则）
+
+   01 顶部导航固定在视口顶部；
+   02 左侧边栏与右侧的 03 + 04 共用同一网格行；
+   右侧内容超过屏幕高度时，页面整体滚动，不再单独裁切 04。
+   ========================================================= */
+
+:root {
+  --page-top: 72px;
+  --page-gap: clamp(10px, 0.9vw, 16px);
+  --page-edge: clamp(10px, 1vw, 20px);
+}
+
+html {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 720px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.page-layout {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding:
+    calc(var(--page-top) + var(--page-edge))
+    var(--page-edge)
+    var(--page-edge);
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  grid-template-rows: minmax(calc(100vh - var(--page-top) - (2 * var(--page-edge))), auto);
+  grid-template-rows: minmax(calc(100dvh - var(--page-top) - (2 * var(--page-edge))), auto);
+  align-items: stretch;
+  gap: var(--page-gap);
+  transition: grid-template-columns 0.25s ease;
+}
+
+.page-layout.sidebar-collapsed {
+  grid-template-columns: var(--sidebar-collapsed-width) minmax(0, 1fr);
+}
+
+.main-wrapper,
+.main-wrapper.collapsed {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 100%;
+  margin-left: 0;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.sidebar {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  max-height: none;
+  padding-top: var(--sidebar-pad-top);
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.sidebar.collapsed {
+  width: 100%;
+}
+
+.sidebar-toggle,
+.sidebar-toggle.collapsed {
+  position: absolute;
+  top: calc(var(--page-top) + var(--page-edge) + var(--sidebar-toggle-inset));
+  left: calc(var(--page-edge) + var(--sidebar-toggle-inset));
+}
+
+.sidebar-toggle.collapsed {
+  left: calc(
+    var(--page-edge) +
+    var(--sidebar-collapsed-width) -
+    var(--sidebar-toggle-size) -
+    var(--sidebar-collapsed-pad)
+  );
+}
+
+.cards-scroll-area {
+  flex: 1 0 auto;
+  min-height: 0;
+  overflow: visible !important;
+}
+
+.cards-scroll-area .grid {
+  flex: 0 0 auto;
+  height: auto;
+  min-height: 0;
+  padding-bottom: 0;
+  overflow: visible !important;
+  overscroll-behavior: auto;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+/* 分类三卡始终按左—中—右的相对关系排布，不再按断点缩放整组。 */
+.rock-list {
+  zoom: 1 !important;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --sidebar-width: 210px;
+  }
+
+  .page-layout {
+    grid-template-columns: var(--sidebar-width) minmax(480px, 1fr);
+  }
+
+  .page-layout.sidebar-collapsed {
+    grid-template-columns: var(--sidebar-collapsed-width) minmax(480px, 1fr);
+  }
+}

@@ -7,10 +7,12 @@
 const sidebar = document.querySelector('.sidebar');
 const main = document.querySelector('.main-wrapper');
 const btn = document.querySelector('.sidebar-toggle');
+const pageLayout = document.querySelector('.page-layout');
 
-btn.addEventListener('click', () => {
+btn?.addEventListener('click', () => {
   const isCollapsed = sidebar.classList.toggle('collapsed');
 
   main.classList.toggle('collapsed', isCollapsed);
   btn.classList.toggle('collapsed', isCollapsed);
+  pageLayout?.classList.toggle('sidebar-collapsed', isCollapsed);
 });

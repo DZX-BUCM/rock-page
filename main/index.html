@@ -4,10 +4,10 @@
   <!-- 基础信息 -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>网址大全</title>
+  <title>欢迎光临小丁工作台</title>
 
   <!-- 网站图标 -->
-  <link rel="icon" href="favicon/shizi.png" />
+  <link rel="icon" href="pict/ico01.png" />
 
   <!-- 四个分区样式（全部使用相对路径）
        001 = 顶部导航区
@@ -21,6 +21,13 @@
 </head>
 
 <body>
+
+  <!--
+    第二区、第三区、第四区统一放在同一个布局容器中。
+    这样左侧边栏会和右侧内容共享同一行高：右侧内容变长时，
+    左侧边栏会同步延伸；小屏放不下时则由页面整体纵向滚动。
+  -->
+  <div class="page-layout">
 
   <!-- ======================================================
        1) 左侧侧边栏开关按钮
@@ -144,13 +151,11 @@
          ==================================================== -->
     <header class="topic" role="banner" data-zone="001">
       <div class="bar" id="topic-bar">
-
         <!-- 品牌入口 / 邮箱直达 -->
-        <a class="brand" href="../add/youxianghewangpan.html" target="_blank" rel="noopener">
-          <img src="favicon/ico.png" alt="" onerror="this.style.display='none'" />
+        <a class="brand" href="../add/email-cloud-drive.html" target="_blank" rel="noopener">
           <div class="brand-text">
-            <strong>通讯面板</strong>
-            <small>邮箱网盘一站式管理</small>
+            <strong>交流一下吧~</strong>
+            <small>邮箱和网盘都在这里...</small>
           </div>
         </a>
 
@@ -238,6 +243,8 @@
       <main class="grid" id="grid"></main>
     </section>
   </div>
+
+  </div><!-- /.page-layout -->
 
 
   <!-- ======================================================

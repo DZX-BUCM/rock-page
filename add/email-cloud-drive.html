@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="常用邮箱与网盘快捷入口"
+  />
+
+  <title>邮箱与网盘</title>
+  <link
+    rel="icon"
+    type="image/png"
+    href="../main/pict/ico01.png"
+  />
+  <link rel="stylesheet" href="email-cloud-drive.css" />
+  <script src="email-cloud-drive.js" defer></script>
+</head>
+<body>
+  <main class="portal">
+    <section
+      class="portal-section portal-section--email"
+      aria-labelledby="email-title"
+    >
+      <header class="section-header">
+        <span class="section-icon" aria-hidden="true">@</span>
+
+        <div>
+          <h1 id="email-title">邮箱</h1>
+          <p>常用邮箱快捷入口</p>
+        </div>
+      </header>
+
+      <div
+        class="service-list"
+        id="email-list"
+      ></div>
+    </section>
+
+    <section
+      class="portal-section portal-section--cloud"
+      aria-labelledby="cloud-title"
+    >
+      <header class="section-header">
+        <span class="section-icon" aria-hidden="true">☁</span>
+
+        <div>
+          <h2 id="cloud-title">网盘</h2>
+          <p>常用网盘快捷入口</p>
+        </div>
+      </header>
+
+      <div
+        class="service-list"
+        id="cloud-list"
+      ></div>
+    </section>
+  </main>
+</body>
+</html>

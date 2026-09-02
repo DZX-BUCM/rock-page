@@ -264,3 +264,47 @@ body {
   height: 100%;
     overflow: hidden;
 }
+
+/* =========================================================
+   第一区入口图标
+   ========================================================= */
+
+.section-one-entry {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start;
+  column-gap: 14px;
+}
+
+.section-one-entry-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.section-one-entry-content--stacked {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 2px;
+}
+
+.section-one-icon {
+  width: 40px !important;
+  height: 40px !important;
+
+  display: block;
+  flex: 0 0 48px;
+  object-fit: contain;
+}
+
+.section-one-entry[data-section-one-label="通讯面板"] .section-one-icon {
+  width: 40px !important;
+  height: 40px !important;
+
+  flex-basis: 56px;
+}
