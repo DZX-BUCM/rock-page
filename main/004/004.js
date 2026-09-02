@@ -792,8 +792,17 @@ const SITES = [
 
   },
 
+  {
+    name: "国家自然基金委",
+    url: "https://kd.nsfc.cn/fundingProjectInit",
+    desc: "国自然标书查询与下载",
+  },
 
-  /* ========================= 知识图谱 ========================= */
+  {
+    name: "国家知识产权局",
+    url: "https://pss-system.cponline.cnipa.gov.cn/conventionalSearch",
+    desc: "中国专利查询与下载",
+  },
 
   {
     name: "Neo4j",
