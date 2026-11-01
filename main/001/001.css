@@ -308,3 +308,9 @@ body {
 
   flex-basis: 56px;
 }
+
+.section-one-entry[data-section-one-label="BSU研究生管理平台"] .section-one-icon {
+  width: 52px !important;
+  height: 52px !important;
+  flex: 0 0 52px;
+}

@@ -21,22 +21,16 @@ const ENGINES = [
     }
   },
   {
-    id: "baidu",
-    name: "百度",
-    placeholder: "是的我什么都知道",
-    url: (q) => `https://www.baidu.com/s?wd=${encodeURIComponent(q)}`
-  },
-  {
     id: "google",
     name: "Google",
     placeholder: "是不是又偷偷翻墙啦？？？",
     url: (q) => `https://www.google.com/search?q=${encodeURIComponent(q)}`
   },
   {
-    id: "taobao",
-    name: "淘宝",
-    placeholder: "来淘点宝贝吧~",
-    url: (q) => `https://s.taobao.com/search?q=${encodeURIComponent(q)}`
+    id: "jingdong",
+    name: "京东",
+    placeholder: "想要东狗给你服务吗~",
+    url: (q) => `https://search.jd.com/Search?keyword=${encodeURIComponent(q)}`
   },
   {
     id: "bing",

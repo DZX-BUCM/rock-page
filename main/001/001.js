@@ -56,6 +56,11 @@ function initSectionOneIcons() {
       stacked: false
     },
     {
+      label: "BSU研究生管理平台",
+      icon: "./pict/ico_01.png",
+      stacked: false
+    },
+    {
       label: "大乘佛法",
       icon: "./pict/ico04.png",
       stacked: false

@@ -342,8 +342,9 @@ const KNOWLEDGE_KEYWORDS = [
   "红楼梦",
   "黄帝内经",
   "佛法",
-  "Neo4j"
-
+  "Neo4j",
+  "BSU",
+  "北体"
 ];
 
 
@@ -671,45 +672,45 @@ const SITES = [
   /* ========================= 学习资料 ========================= */
 
   {
-    name: "中国知网",
-    url: "https://xztg.cnki.net/",
-    desc: "论文投稿网站",
+    name: "BSU文献检索",
+    url: "https://wisdom.chaoxing.com/newwisdom/doordatabase/database.html?pageId=895000&wfwfid=23111&websiteId=469050",
+    desc: "BSU学术资源",
+  },
 
+  {
+    name: "BSU纸质图书检索",
+    url: "https://opac.bsu.edu.cn/space/index?strSearchType=title&match_flag=any&strText=%E6%AF%9B%E6%B3%BD%E4%B8%9C%E9%80%89%E9%9B%86&img.x=62&img.y=10",
+    desc: "BSU图书馆藏资源",
   },
 
   {
     name: "托福单词",
     url: "https://blog.csdn.net/qq_33957603/article/details/130328628?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-130328628-blog-72852143.235%5ev43%5epc_blog_bottom_relevance_base6&spm=1001.2101.3001.4242.1&utm_relevant_index=3",
     desc: "单词学习",
-
   },
 
   {
     name: "TED音频01",
     url: "https://www.ted.com/talks/tarveen_forrester_let_your_ambition_light_you_up_not_burn_you_out",
     desc: "listening",
-
   },
 
   {
     name: "TED音频03",
     url: "https://www.ted.com/talks/wendy_macnaughton_the_art_of_paying_attention",
     desc: "listening",
-
   },
 
   {
     name: "TED音频02",
     url: "https://www.ted.com/talks/vittorio_loreto_need_a_new_idea_start_at_the_edge_of_what_is_known",
     desc: "listening",
-
   },
 
   {
     name: "TED音频04",
     url: "https://www.youtube.com/watch?v=Zz9aXCfTdhw",
     desc: "listening",
-
   },
 
 
