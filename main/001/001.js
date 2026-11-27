@@ -144,3 +144,34 @@ if (document.readyState === "loading") {
 } else {
   initSectionOneIcons();
 }
+
+
+/* =========================================================
+   顶部题头：根据可用宽度自动等比例缩放
+   ========================================================= */
+function initTopicScale() {
+  const bar = document.querySelector(".topic .bar");
+  if (!bar) return;
+
+  const parent = bar.parentElement;
+
+  const fit = () => {
+    if (!parent.clientWidth) return;
+
+    bar.style.zoom = "1";
+    bar.style.zoom = String(Math.min(1, parent.clientWidth / bar.offsetWidth));
+  };
+
+  new ResizeObserver(fit).observe(parent);
+}
+
+function initSectionOne() {
+  initSectionOneIcons();
+  initTopicScale();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initSectionOne);
+} else {
+  initSectionOne();
+}

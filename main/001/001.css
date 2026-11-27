@@ -314,3 +314,29 @@ body {
   height: 52px !important;
   flex: 0 0 52px;
 }
+
+
+/* =========================================================
+   顶部题头：整体等比例缩放适配
+   ========================================================= */
+
+.topic .bar {
+  min-width: max-content;
+    gap: 56px;
+    padding: 0 38px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.topic .nav {
+  flex-wrap: nowrap;
+}
+
+.topic .bar > *,
+.topic .nav-item,
+.topic .section-one-entry-content,
+.topic .section-one-entry-content > * {
+  flex-shrink: 0;
+    white-space: nowrap;
+}
